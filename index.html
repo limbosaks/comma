@@ -30685,8 +30685,8 @@ const FAQ = [
   ['Is Comma really free?', `<p>Yes. There are no ads, no paywall, and no paid tiers. Every test, flashcard, and feature is free to use. Donations are optional and only help keep the site running and growing.</p>`],
   ['Are these the real exam questions?', `<p>No. Every question, passage, flashcard, and writing prompt was written from scratch for Comma. Nothing is copied from official tests, test-prep books, or other sites.</p><p>Each practice test follows the <b>public</b> outline for the real exam (the topics, how many questions, the time limit, and the question styles) so practice feels close to test day. Comma is independent and isn't affiliated with or endorsed by ETS or any testing organization.</p>`],
   ['Do you keep a record of my scores?', `<p>No. Your scores, answers, and progress are saved only in your own browser on your own device. They're never sent to me, and I have no way to see them. I don't have that kind of access, and I won't ask for it.</p><p>To remove them, use "Reset" on the home page or on a test's page, or clear your browser's data for the site.</p>`],
-  ['What information do you have about me?', `<p>Only the email address you use to sign in, because your access code is made for that email. Comma doesn't ask for your name, phone number, school, or anything else.</p><p>Donations go through Stripe, so Comma never sees card details.</p>`],
-  ['Why do I need an access code?', `<p>Codes keep the site manageable while it stays free. Most codes change on the 1st of each month, and you'll get the new one by email. Some members have a lifetime code that never changes.</p>`],
+  ['What information do you have about me?', `<p>Only what's needed to send you an access code: your name, your email address, and your school or organization if you choose to give it. If you tick the box for product news, that choice is saved too, and every email has an unsubscribe link. Comma never asks for your phone number or address, and it never collects your scores.</p><p>Donations go through Stripe, so Comma never sees card details.</p>`],
+  ['Why do I need an access code?', `<p>Codes keep the site manageable while it stays free. ${PATH_MODE ? 'New here? Choose <b>Sign up</b> on the sign-in page and your code will be emailed to you once your sign-up is approved. ' : ''}Most codes change on the 1st of each month, and you'll get the new one by email. Some members have a lifetime code that never changes.</p>`],
   ['I forgot my access code. What do I do?', `<p>On the sign-in page, choose <b>Forgot your code?</b> to send a quick reset request, or email ${OWNER_EMAIL}. You'll get a new code, and the old one stops working. Tip: if your browser saved your code, click the code box to see it.</p>`],
   ['Why don\'t my scores show up on another device?', `<p>Because they're stored only in the browser you used (see above). Use the same device and browser to keep your history together.</p>`],
   ['How close are the practice tests to the real exam?', `<p>Each full simulation uses the same number of questions, time limit, and content categories as the real test. The <b>Standard</b> setting is matched to official full-length practice tests, with the same mix of quick recall, applied, and multi-step questions. If you want more of a stretch, switch to <b>Challenge</b>, which is harder than the real exam on purpose.</p><p>Your score is a practice estimate, not a prediction of your official score.</p>`],
@@ -31599,7 +31599,7 @@ function renderGate(err) {
       <p class="small muted" style="margin:-4px 0 0">Your browser can save and fill in your code next time.</p>
       <button class="btn primary" type="submit" id="gGo">Sign in</button>
       <div class="err" id="gErr" role="alert">${err ? esc(err) : ''}</div></form></section>
-    <p class="small muted"><button class="linkbtn sm" id="gForgot">Forgot your code?</button> · Don't have a code? Ask the site owner (${OWNER_EMAIL}).</p></div>`;
+    <p class="small muted"><button class="linkbtn sm" id="gForgot">Forgot your code?</button><br>Don't have a code? ${PATH_MODE ? 'Sign up for one, or email' : 'Ask the site owner at'} <span style="white-space:nowrap">${OWNER_EMAIL}</span>.</p></div>`;
   $('#gForm').onsubmit = async e => {
     e.preventDefault(); const email = !GUEST && ACCT_EMAIL ? ACCT_EMAIL : normEmail($('#gName').value), code = $('#gCode').value;
     const fail = m => { $('#gErr').textContent = m; $('#gGo').disabled = false; };
@@ -31948,4 +31948,5 @@ initAuth().catch(e => { MODE = 'blocked'; BLOCK = 'host'; }).then(() => { try { 
 })();
 </script>
 
+<script src="/signup.js" data-site="comma" defer></script>
 </body></html>
