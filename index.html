@@ -398,7 +398,8 @@ blockquote.src cite::before { content: "— "; }
 .choice.is-right .verdict { color: var(--good); }
 .choice.is-wrong { border-color: var(--bad); background: var(--bad-soft); }
 .choice.is-wrong .verdict { color: var(--bad); }
-.nuc { display: inline-flex; flex-direction: column; font-size: .68em; line-height: 1.05; text-align: right; vertical-align: -0.35em; margin-right: 1px; }
+.nuc { display: inline-flex; flex-direction: column; align-items: flex-end; font-size: .6em; line-height: 1; vertical-align: .3em; margin: 0 1px 0 .1em; }
+.nuc > span:last-child { margin-top: .05em; }
 .qnav { display: flex; justify-content: space-between; gap: 10px; margin-top: 28px; flex-wrap: wrap; }
 .kbd { font-size: 12px; color: var(--muted); margin-top: 18px; font-family: var(--font-mono); }
 .answerbar { margin-top: 16px; padding: 9px 12px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: center; font-size: 13.5px; color: var(--muted); }
@@ -28163,7 +28164,7 @@ GH('II', 'optim', () => {
 GH('II', 'area2', () => {
   const k = R.pick([1, 2, 3, 4]); const A = 4 * Math.pow(k, 3) / 3; const a3 = 4 * Math.pow(k, 3);
   return ne(`What is the area of the region bounded by y = x² and y = ${2 * k}x? Enter an integer or fraction.`, A,
-    `The curves meet at x = 0 and x = ${2 * k}. Area = ∫₀^${2 * k} (${2 * k}x − x²) dx = ${k * 4 * k * k} − ${8 * k * k * k}/3 = ${fr(a3, 3)}.`, { show: fr(a3, 3) });
+    `The curves meet at x = 0 and x = ${2 * k}. Area = ∫₀^(${2 * k}) (${2 * k}x − x²) dx = ${k * 4 * k * k} − ${8 * k * k * k}/3 = ${fr(a3, 3)}.`, { show: fr(a3, 3) });
 });
 
 /* ═════════════ III. Geometry ═════════════ */
