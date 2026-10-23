@@ -15,9 +15,12 @@ const SIGNUP_ENDPOINT = 'https://script.google.com/macros/s/AKfycby1jWaTEgqIqPZG
       extra: ['Class code (if your teacher gave you one)', 'suJoin', 'e.g. BIO-P2'], extra2: ['Your teacher’s email (optional)', 'suTeacher', 'teacher@school.org'],
       opt: 'Email me news about new products from Comma, the team behind Educator Hub. Optional. If you’re under 14, ask a parent first. You can unsubscribe anytime.' },
   }[SITE];
-  const css = `.su-cta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:14px 0 6px;padding:12px 14px;border:1px dashed var(--line,#ccc);border-radius:10px;font-size:14px}
-.su-cta b{font-weight:700}.su-cta button{margin-left:auto;font:inherit;font-weight:700;font-size:14px;padding:8px 14px;border-radius:8px;border:1.5px solid var(--accent,#1d3e9e);background:transparent;color:var(--accent,#1d3e9e);cursor:pointer}
-.su-cta button:hover{background:var(--accent,#1d3e9e);color:var(--surface,#fff)}
+  const css = `.su-cta{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;margin:16px 0 14px;padding:13px 14px;border:1px dashed var(--line,#ccc);border-radius:10px;font-size:13.5px;line-height:1.45;color:var(--ink,#111)}
+.su-cta .su-t{flex:1 1 200px;min-width:0}.su-cta .su-t b{font-weight:700}
+.su-cta button{flex:none;font:inherit;font-weight:700;font-size:14px;padding:8px 16px;border-radius:9px;border:1.5px solid var(--accent,#1d3e9e);background:transparent;color:var(--accent,#1d3e9e);cursor:pointer;transition:background .15s,color .15s}
+.su-cta button:hover,.su-cta button:focus-visible{background:var(--accent,#1d3e9e);color:var(--surface,#fff)}
+@media (max-width:420px){.su-cta button{width:100%}}
+.su-fg{line-height:1.6}.su-nw{white-space:nowrap}
 .su-ov{position:fixed;inset:0;z-index:60;background:rgba(10,14,25,.55);display:grid;place-items:center;padding:16px;overflow:auto}
 .su-card{width:min(460px,100%);background:var(--surface,#fff);color:var(--ink,#111);border:1px solid var(--line,#ddd);border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.25);padding:22px 22px 18px}
 .su-card h2{margin:0 0 6px;font-size:21px}.su-card p.su-lead{margin:0 0 14px;color:var(--muted,#555);font-size:14px;line-height:1.5}
@@ -77,8 +80,12 @@ const SIGNUP_ENDPOINT = 'https://script.google.com/macros/s/AKfycby1jWaTEgqIqPZG
   const place = () => {
     const f = document.getElementById('gForgot'); if (!f || document.getElementById('suOpen')) return;
     const p = f.closest('p') || f; const box = document.createElement('div'); box.className = 'su-cta';
-    box.innerHTML = `<span><b>New here?</b> Sign up and we’ll email your access code.</span><button type="button" id="suOpen">Sign up</button>`;
+    box.innerHTML = `<span class="su-t"><b>New here?</b> Sign up and we’ll email you a code.</span><button type="button" id="suOpen">Sign up</button>`;
     p.parentNode.insertBefore(box, p); box.querySelector('button').onclick = open;
+    /* the "Forgot your code?" line: the link on its own line, then one sentence that points to Sign up, with the email kept whole */
+    if (p !== f) { p.classList.add('su-fg');
+      for (const n of [...p.childNodes]) { const m = n.nodeType === 3 && n.textContent.match(/^[\s\u00b7]*Don.t have a code\?[^(]*\(([^()\s]+@[^()\s]+)\)\.?\s*$/);
+        if (m) { const e = document.createElement('span'); e.className = 'su-nw'; e.textContent = m[1]; n.replaceWith(document.createElement('br'), 'Don\u2019t have a code? Sign up for one, or email ', e, '.'); } } }
   };
   new MutationObserver(place).observe(document.body, { childList: true, subtree: true }); place();
 })();
