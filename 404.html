@@ -307,6 +307,8 @@ p.lead { color: var(--muted); max-width: 62ch; margin: 0 0 22px; font-size: 17px
 .mode p { margin: 0; color: var(--muted); font-size: 14.5px; max-width: 52ch; }
 .mode .opts { display: grid; gap: 10px; margin-top: 4px; }
 .mode .opt { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.kbd-opt { display: flex; gap: 8px; align-items: center; font-size: 13.5px; color: var(--muted); cursor: pointer; margin-top: 2px; }
+.kbd-opt input { width: 16px; height: 16px; accent-color: var(--accent); margin: 0; }
 .mode.pre { background: linear-gradient(var(--accent-soft), var(--accent-soft)) no-repeat; background-size: 100% 4px; }
 .resume { border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 12px 16px; margin: 18px 0 0; }
 .resume p { margin: 0 0 10px; }
@@ -32396,7 +32398,8 @@ function renderTestPage(x) {
       <div class="mode ${PREF_MODE === 'simulate' ? 'pre' : ''}"><span class="tag-m">Real conditions</span><h3>Exam simulation</h3>
         <p>Timed. Answers after you submit.</p>
         <div class="opts"><div class="opt"><button class="btn primary" id="startFull">Start full simulation</button></div>
-          <div class="opt"><select id="drillCat" aria-label="Timed drill category">${x.cats.map(c => `<option value="${c.k}" ${c.k === weakest ? 'selected' : ''}>${c.k}. ${esc(c.short)}</option>`).join('')}</select><button class="btn quiet" id="startDrill">${drillLabel(weakest)}</button></div></div></div>
+          <div class="opt"><select id="drillCat" aria-label="Timed drill category">${x.cats.map(c => `<option value="${c.k}" ${c.k === weakest ? 'selected' : ''}>${c.k}. ${esc(c.short)}</option>`).join('')}</select><button class="btn quiet" id="startDrill">${drillLabel(weakest)}</button></div>
+          <label class="kbd-opt"><input type="checkbox" id="noKbd" ${noKbd(x) ? 'checked' : ''}> Turn off keyboard shortcuts, as on the real test</label></div></div>
     </section>
     <section class="stats3">
       <div><h2 class="sec-h">${hasStats ? 'Your accuracy · last 5' : 'Questions per category'}</h2><ul class="blueprint">${bp}</ul></div>
@@ -32414,6 +32417,7 @@ function renderTestPage(x) {
   $$('[name="lvl"]').forEach(r => r.onchange = () => { LS.set(`pp.${PID}.level`, r.value); const n = $('#lvlNote'); if (n) n.textContent = lvNote(x, r.value); });
   $('#startPSet').onclick = () => startTest(x, 'drill', $('#pCat').value, getLevel(), true);
   $('#startPFull').onclick = () => startTest(x, 'full', null, getLevel(), true);
+  $('#noKbd').onchange = e => LS.set(`pp.${PID}.nokbd.${x.id}`, e.target.checked);
   $('#startFull').onclick = () => startTest(x, 'full', null, getLevel());
   $('#startDrill').onclick = () => startTest(x, 'drill', $('#drillCat').value, getLevel());
   $('#drillCat').onchange = () => { $('#startDrill').textContent = drillLabel($('#drillCat').value); };
@@ -32424,8 +32428,10 @@ function renderTestPage(x) {
   if ($('#resetPracBtn')) $('#resetPracBtn').onclick = () => { const n = hist.filter(h => h.practice).length; confirmBox(`Clear ${x.subject} practice scores?`, `This removes your ${n} practice result${n === 1 ? '' : 's'} for this test. Exam simulations and timed drills stay. It cannot be undone.`, 'Clear practice scores', () => { clearPractice([x]); renderTestPage(x); }); };
   $$('[data-review]').forEach(b => b.onclick = () => { const h = LS.get(k.hist, [])[+b.dataset.review]; if (h) renderResults(h, false); });
 }
+/* simulation option, saved per test: no keyboard shortcuts, as on the real exam */
+const noKbd = x => !!LS.get(`pp.${PID}.nokbd.${x.id}`, false);
 function startTest(x, mode, cat, level, practice) {
-  X = x; const goNow = () => { T = buildTest(x, mode, cat, level || getLevel(), !!practice); save(); enterExam(); };
+  X = x; const goNow = () => { T = buildTest(x, mode, cat, level || getLevel(), !!practice); if (!practice && noKbd(x)) T.noKbd = true; save(); enterExam(); };
   if (loadCur(x)) confirmBox('Start a new attempt?', `You have a ${x.subject} attempt in progress. Starting a new one will discard it.`, 'Start new', goNow); else goNow();
 }
 
@@ -32828,13 +32834,13 @@ function renderExam() {
       <p class="numhint">Type a number. Fractions such as 3/4 and negative numbers are accepted.</p>
       <div class="answerbar">Enter your answer in the box.</div>
       <div class="qnav"><button class="btn" id="backB2" ${T.cur === 0 ? 'disabled' : ''}>← Back</button><button class="btn primary" id="nextB2">${T.cur === n - 1 ? 'Go to review' : 'Next →'}</button></div>
-      <p class="kbd">Keyboard: ← → to move when the answer box is not selected · M to mark</p></div>`;
+      ${T.noKbd ? '' : '<p class="kbd">Keyboard: ← → to move when the answer box is not selected · M to mark</p>'}</div>`;
     else body = `<div class="qcol"><div class="qmeta">${T.marked[T.cur] ? '<span class="flag">● Marked for review</span>' : ''}</div>
       <div class="stem">${F(q.stem)}</div>
       <div class="choices" role="${multi ? 'group' : 'radiogroup'}">${q.choices.map((c, i) => `<button class="choice ${multi ? 'multi' : ''}" role="${multi ? 'checkbox' : 'radio'}" aria-checked="${sel.includes(i)}" data-ch="${i}"><span class="ov"></span><span><span class="ltr">${LETTERS[i]}.</span> ${F(c)}</span></button>`).join('')}</div>
       <div class="answerbar">Answer the question by selecting the correct response${multi ? 's' : ''}.</div>
       <div class="qnav"><button class="btn" id="backB2" ${T.cur === 0 ? 'disabled' : ''}>← Back</button><button class="btn primary" id="nextB2">${T.cur === n - 1 ? 'Go to review' : 'Next →'}</button></div>
-      <p class="kbd">Keyboard: 1–${q.choices.length} or A–${LETTERS[q.choices.length - 1]} to choose · ← → to move · M to mark</p></div>`;
+      ${T.noKbd ? '' : `<p class="kbd">Keyboard: 1–${q.choices.length} or A–${LETTERS[q.choices.length - 1]} to choose · ← → to move · M to mark</p>`}</div>`;
     if (q.psg && PASSAGES[q.psg]) body = `<div class="psplit">${psgHTML(PASSAGES[q.psg], !!(T.practice && T.checked[T.cur]))}${body}</div>`;
   }
   $('#exam').innerHTML = bar + `<div class="xbody">${body}</div>`; updateTimer();
@@ -32854,7 +32860,7 @@ function renderExam() {
     bindCaseTabs(); if (q.type === 'cr' && CASES[q.caseId]) bindSpeak(CASES[q.caseId]);
     const ci = $('#crIn'); if (ci) ci.oninput = () => { const v = ci.value; T.ans[T.cur] = v.trim() ? [v] : []; const wc = v.trim() ? v.trim().split(/\s+/).length : 0; $('#crWc').textContent = wc + (wc === 1 ? ' word' : ' words'); if (Date.now() - lastSave > 1500) { save(); lastSave = Date.now(); } $('.progress i').style.width = (T.ans.filter(v => v.length).length / T.items.length * 100) + '%'; };
     if (ci) ci.onblur = save;
-    const ni = $('#numIn'); if (ni) { ni.oninput = () => { const v = ni.value.trim(); T.ans[T.cur] = v ? [v] : []; save(); $('.progress i').style.width = (T.ans.filter(v => v.length).length / T.items.length * 100) + '%'; }; ni.onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); $('#nextB2').click(); } }; }
+    const ni = $('#numIn'); if (ni) { ni.oninput = () => { const v = ni.value.trim(); T.ans[T.cur] = v ? [v] : []; save(); $('.progress i').style.width = (T.ans.filter(v => v.length).length / T.items.length * 100) + '%'; }; ni.onkeydown = e => { if (e.key === 'Enter' && !T.noKbd) { e.preventDefault(); $('#nextB2').click(); } }; }
     const back = () => goQ(T.cur - 1), next = () => T.cur === n - 1 ? (T.screen = 'review', save(), renderExam()) : goQ(T.cur + 1);
     $('#backB').onclick = back; $('#backB2').onclick = back; $('#nextB').onclick = next; $('#nextB2').onclick = next;
   }
@@ -32903,6 +32909,7 @@ function choose(i) {
 function toggleMark() { T.marked[T.cur] = !T.marked[T.cur]; save(); renderExam(); }
 document.addEventListener('keydown', e => {
   if (!inExam || !T || T.screen !== 'q' || $('#modal-root').innerHTML || e.metaKey || e.ctrlKey || e.altKey || /^(SELECT|INPUT|TEXTAREA)$/.test(e.target.tagName)) return;
+  if (T.noKbd && !T.practice) return;
   const q = T.items[T.cur], k = e.key.toLowerCase(), li = 'abcdefg'.indexOf(k);
   if (T.practice) { if (e.key === 'Enter' && (!/^(BUTTON|A)$/.test(e.target.tagName) || e.target.dataset.ch != null)) { e.preventDefault(); T.checked[T.cur] ? pNext() : pCheck(); return; }
     if (e.key === 'ArrowLeft') { goQ(T.cur - 1); return; } if (e.key === 'ArrowRight' && T.checked[T.cur]) { pNext(); return; } if (k === 'm') return; }
