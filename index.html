@@ -555,6 +555,26 @@ pre.code { font-family: var(--font-mono); font-size: 14px; line-height: 1.5; bac
 .field input { padding: 9px 12px; border-radius: 2px; border: 1px solid var(--rule); background: var(--surface); min-width: 0; flex: 1 1 220px; max-width: 320px; }
 .err { color: var(--bad); font-size: 13px; min-height: 18px; margin-top: 6px; }
 .gate { max-width: 520px; margin: 0 auto; }
+.gate.gate2 { max-width: var(--wrap); }
+.gate2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 400px); grid-template-areas: "head side"; gap: 72px; align-items: center; min-height: calc(100vh - 64px); padding-top: 40px; padding-bottom: 40px; }
+.g-head { grid-area: head; } .g-side { grid-area: side; }
+.g-title { font-family: var(--font-display); font-weight: 500; font-size: clamp(52px, 7.4vw, 104px); line-height: .96; letter-spacing: -.025em; margin: 0; max-width: 9.5em; text-wrap: balance; }
+.g-comma { display: inline-block; height: .6em; width: auto; margin-left: .05em; vertical-align: -.24em; fill: var(--ember); }
+.g-lead { font-family: var(--font-display); font-size: clamp(21px, 2vw, 25px); line-height: 1.4; margin: 30px 0 0; max-width: 30ch; color: var(--ink); }
+.g-small { font-size: 14.5px; line-height: 1.55; color: var(--muted); margin: 14px 0 0; max-width: 46ch; }
+.g-free { display: inline-flex; align-items: center; gap: 8px; margin: 22px 0 0; padding: 9px 18px 9px 14px; border: 1.5px solid var(--ember); border-radius: 999px; background: var(--ember-soft); color: var(--ember); font-weight: 600; font-size: 15px; letter-spacing: .005em; }
+.g-free::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--ember); }
+.panel.g-panel { padding: 26px 28px 8px; border-radius: 4px; }
+.panel.g-panel h2 { font-family: var(--font-display); font-weight: 500; font-size: 28px; margin: 0 0 6px; letter-spacing: -.01em; text-transform: none; color: var(--ink); }
+.g-panel .btn.primary { width: 100%; justify-content: center; padding-block: 12px; }
+.g-side .su-cta { margin: 14px 0 12px; }
+.g-help { margin-top: 12px; }
+@media (max-width: 860px) {
+  .gate2 { grid-template-columns: 1fr; grid-template-areas: "head" "side"; gap: 32px; min-height: 0; padding-top: 36px; }
+  .g-title { font-size: clamp(46px, 13vw, 64px); }
+  .g-lead { margin-top: 20px; }
+}
+
 .gate form { display: grid; gap: 12px; }
 .gate label { display: grid; gap: 6px; font-size: 13.5px; font-weight: 600; }
 .gate input, .admin-form input, .rep-form textarea, .rep-form select { padding: 10px 12px; border: 1px solid var(--rule); border-radius: 2px; background: var(--surface); width: 100%; }
@@ -33206,17 +33226,27 @@ function openForgot(email0) {
 }
 function renderGate(err) {
   setAccent(null); show('hub');
-  $('#hub').innerHTML = `<div class="page gate"><div class="eyebrow">Comma</div><h1 class="display">Sign in</h1>
-    <p class="lead">Sign in with your email and access code.</p>
-    ${GATE_MSG ? `<p class="notice">${esc(GATE_MSG)}</p>` : ''}
-    <section class="panel"><form id="gForm" autocomplete="on" method="post" action="#">
+  const nT = TESTS.length;
+  $('#hub').innerHTML = `<div class="page gate gate2">
+    <section class="g-head">
+      <h1 class="g-title">Pass with room to spare<svg class="g-comma" viewBox="14 6.5 36 54" aria-hidden="true"><circle cx="31" cy="24" r="16"/><path d="M46.4 29.2C44.6 43.4 36.2 53.6 25 59.4c-1.2.6-2.1-.7-1.2-1.6C28.4 53 31.6 47.6 33.6 40.1z"/></svg></h1>
+      <p class="g-lead">Free Praxis practice tests, with an explanation for every answer.</p>
+      <p class="g-small">${nT} tests, from Core and PLT to science, math, and world languages.</p>
+      <p class="g-free">No fees and no ads</p>
+    </section>
+    <aside class="g-side">
+      <section class="panel g-panel"><h2>Sign in</h2>
+      ${GATE_MSG ? `<p class="notice">${esc(GATE_MSG)}</p>` : ''}<form id="gForm" autocomplete="on" method="post" action="#">
       ${!GUEST && ACCT_EMAIL ? `<p class="small" style="margin:0">Signed in to Claude as <b>${esc(ACCT_EMAIL)}</b>. Access codes work only with the email they were issued to.</p>` : ''}
       <label>Email<input id="gName" type="email" maxlength="80" ${!GUEST && ACCT_EMAIL ? `value="${esc(ACCT_EMAIL)}" readonly` : (LS.get('pp.member.' + memberKey(), null) || {}).email ? `value="${esc(LS.get('pp.member.' + memberKey(), null).email)}"` : ''} placeholder="you@example.com" name="username" autocomplete="username"></label>
       <label>Access code<span class="pw-wrap"><input id="gCode" name="password" type="password" maxlength="40" placeholder="XXXX-XXXX" spellcheck="false" autocomplete="current-password" autocapitalize="characters"><button type="button" class="linkbtn sm" id="gShow" aria-pressed="false">Show</button></span></label>
       <p class="small muted" style="margin:-4px 0 0">Your browser can save and fill in your code next time.</p>
       <button class="btn primary" type="submit" id="gGo">Sign in</button>
       <div class="err" id="gErr" role="alert">${err ? esc(err) : ''}</div></form></section>
-    <p class="small muted"><button class="linkbtn sm" id="gForgot">Forgot your code?</button><br>Don't have a code? ${PATH_MODE ? 'Sign up for one, or email' : 'Ask the site owner at'} <span style="white-space:nowrap">${OWNER_EMAIL}</span>.</p></div>`;
+      <p class="small muted g-help"><button class="linkbtn sm" id="gForgot">Forgot your code?</button><br>Don't have a code? ${PATH_MODE ? 'Sign up for one, or email' : 'Ask the site owner at'} <span style="white-space:nowrap">${OWNER_EMAIL}</span>.</p>
+      
+    </aside>
+  </div>`;
   $('#gForm').onsubmit = async e => {
     e.preventDefault(); const email = !GUEST && ACCT_EMAIL ? ACCT_EMAIL : normEmail($('#gName').value), code = $('#gCode').value;
     const fail = m => { $('#gErr').textContent = m; $('#gGo').disabled = false; };
