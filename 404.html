@@ -14,7 +14,7 @@
   --cobalt: #1d3e9e; --cobalt-soft: #e1e6f4; --ember: #bf5418; --ember-soft: #f5e1d2;
   --chem: #1c6b73; --chem-soft: #dcebe9; --bio: #4a6b26; --bio-soft: #e4ebd6; --math: #31449a; --math-soft: #e1e4f2;
   --phys: #5a3c8c; --phys-soft: #e9e2f2; --psych: #963a57; --psych-soft: #f2e0e5; --cs: #2c5675; --cs-soft: #dde7ee;
-  --econ: #85601a; --econ-soft: #f1e7d2; --lang: #6c3a6c; --lang-soft: #eee0ec; --pe: #a64b1d; --pe-soft: #f4e2d6; --plt: #1d3e9e; --plt-soft: #e1e6f4; --core: #3e4a57; --core-soft: #e3e7ec; --wl: #8a3b2f; --wl-soft: #f3e1dc;
+  --econ: #85601a; --econ-soft: #f1e7d2; --lang: #6c3a6c; --lang-soft: #eee0ec; --pe: #a64b1d; --pe-soft: #f4e2d6; --plt: #1d3e9e; --plt-soft: #e1e6f4; --core: #3e4a57; --core-soft: #e3e7ec; --wl: #8a3b2f; --wl-soft: #f3e1dc; --gre: #6b4a12; --gre-soft: #f1e6cf;
   --accent: var(--cobalt); --accent-soft: var(--cobalt-soft); --accent-ink: #fbf9f4;
   --mark: #9a6510; --mark-soft: #f4e7cd; --good: #2a6b40; --good-soft: #dcebdc; --bad: #a8361f; --bad-soft: #f5ddd5;
   --scrim: rgba(22, 24, 29, .5);
@@ -30,7 +30,7 @@
     --cobalt: #93a9f1; --cobalt-soft: #1d2440; --ember: #ee8b4e; --ember-soft: #3a2417;
     --chem: #6cc2c9; --chem-soft: #16302f; --bio: #a3c77a; --bio-soft: #222d16; --math: #9eabeb; --math-soft: #1e2340;
     --phys: #bea3e8; --phys-soft: #2a2140; --psych: #e796b0; --psych-soft: #3a1d27; --cs: #8fbadb; --cs-soft: #172a39;
-    --econ: #e2bb6a; --econ-soft: #33280f; --lang: #d7a2d7; --lang-soft: #331d33; --pe: #ef9a6c; --pe-soft: #3a2216; --plt: #93a9f1; --plt-soft: #1d2440; --core: #a9b8c8; --core-soft: #1e252d; --wl: #e89a88; --wl-soft: #3a211c;
+    --econ: #e2bb6a; --econ-soft: #33280f; --lang: #d7a2d7; --lang-soft: #331d33; --pe: #ef9a6c; --pe-soft: #3a2216; --plt: #93a9f1; --plt-soft: #1d2440; --core: #a9b8c8; --core-soft: #1e252d; --wl: #e89a88; --wl-soft: #3a211c; --gre: #e0b768; --gre-soft: #33280f;
     --accent-ink: #121317; --mark: #e2ac52; --mark-soft: #3a2d14; --good: #79c78f; --good-soft: #17301f; --bad: #f08a72; --bad-soft: #3d1f19;
     --scrim: rgba(0, 0, 0, .6); color-scheme: dark;
   }
@@ -40,7 +40,7 @@
   --cobalt: #93a9f1; --cobalt-soft: #1d2440; --ember: #ee8b4e; --ember-soft: #3a2417;
   --chem: #6cc2c9; --chem-soft: #16302f; --bio: #a3c77a; --bio-soft: #222d16; --math: #9eabeb; --math-soft: #1e2340;
   --phys: #bea3e8; --phys-soft: #2a2140; --psych: #e796b0; --psych-soft: #3a1d27; --cs: #8fbadb; --cs-soft: #172a39;
-  --econ: #e2bb6a; --econ-soft: #33280f; --lang: #d7a2d7; --lang-soft: #331d33; --pe: #ef9a6c; --pe-soft: #3a2216; --plt: #93a9f1; --plt-soft: #1d2440; --core: #a9b8c8; --core-soft: #1e252d; --wl: #e89a88; --wl-soft: #3a211c;
+  --econ: #e2bb6a; --econ-soft: #33280f; --lang: #d7a2d7; --lang-soft: #331d33; --pe: #ef9a6c; --pe-soft: #3a2216; --plt: #93a9f1; --plt-soft: #1d2440; --core: #a9b8c8; --core-soft: #1e252d; --wl: #e89a88; --wl-soft: #3a211c; --gre: #e0b768; --gre-soft: #33280f;
   --accent-ink: #121317; --mark: #e2ac52; --mark-soft: #3a2d14; --good: #79c78f; --good-soft: #17301f; --bad: #f08a72; --bad-soft: #3d1f19;
   --scrim: rgba(0, 0, 0, .6); color-scheme: dark;
 }
@@ -56,6 +56,7 @@
 #app.acc-plt, .acc-plt { --accent: var(--plt); --accent-soft: var(--plt-soft); }
 #app.acc-core, .acc-core { --accent: var(--core); --accent-soft: var(--core-soft); }
 #app.acc-wl, .acc-wl { --accent: var(--wl); --accent-soft: var(--wl-soft); }
+#app.acc-gre, .acc-gre { --accent: var(--gre); --accent-soft: var(--gre-soft); }
 
 * { box-sizing: border-box; }
 html, body { height: 100%; }
@@ -684,6 +685,31 @@ details.rv-psg .psg { position: static; max-height: 360px; margin-top: 8px; }
 /* ───── Quick Review: reference shelf ───── */
 .qr { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 36px; border-top: 1px solid var(--ink); padding-top: 18px; }
 .decklist { list-style: none; margin: 0; padding: 0; }
+.gre-tabs { margin-top: 26px; flex-wrap: wrap; } .gre-sub { margin-bottom: 14px; }
+.gre-modes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.gre-card { background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--accent); padding: 18px 20px; display: flex; flex-direction: column; gap: 10px; }
+.gre-card h3 { font-family: var(--font-display); font-weight: 500; font-size: 22px; margin: 0; }
+.gre-card p { margin: 0; color: var(--muted); font-size: 14.5px; flex: 1; }
+.gre-card .row { display: flex; flex-wrap: wrap; gap: 8px; }
+.gre-h2 { font-family: var(--font-display); font-weight: 500; font-size: 24px; margin: 34px 0 10px; }
+.gre-tips { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); max-width: 880px; }
+.gre-tips li { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 4px 18px; padding: 12px 2px; border-bottom: 1px solid var(--line); }
+.gre-tips b { font-family: var(--font-display); font-weight: 500; font-size: 18px; } .gre-tips span { color: var(--muted); font-size: 14.5px; }
+.gre-fc .fcard-in { min-height: 300px; }
+.gre-fc .front { align-items: center; justify-content: center; text-align: center; }
+.gre-fc .gw { font-family: var(--font-display); font-size: clamp(36px, 6vw, 54px); line-height: 1.05; letter-spacing: -.01em; }
+.gre-fc .gp { font-family: var(--font-display); font-style: italic; color: var(--muted); font-size: 18px; margin-top: 6px; }
+.gre-fc .gd { font-family: var(--font-q); font-size: 21px; line-height: 1.4; margin-top: 10px; }
+.gre-fc .ge { font-family: var(--font-q); font-size: 17px; line-height: 1.5; margin: 14px 0 0; color: var(--ink); }
+.gre-fc .ge b { color: var(--accent); }
+.gre-fc .gs { font-size: 13.5px; color: var(--muted); margin: 12px 0 0; } .gre-fc .gs span { font-weight: 600; color: var(--ink); }
+.gre-quiz { max-width: 680px; } .gre-quiz .gq-p { font-family: var(--font-q); font-size: 22px; line-height: 1.4; margin: 0 0 16px; }
+.gq-fb { margin-top: 14px; padding: 12px 14px; border-left: 4px solid var(--good); background: var(--good-soft); font-size: 15px; } .gq-fb.no { border-color: var(--bad); background: var(--bad-soft); }
+.gre-list td { text-align: left; vertical-align: top; font-variant-numeric: normal; } .gre-list td:first-child { white-space: nowrap; }
+#grFind { padding: 8px 10px; border: 1px solid var(--rule); background: var(--surface); min-width: 220px; }
+table.data.qc { display: table; width: 100%; max-width: 560px; } table.data.qc td { font-family: var(--font-q); font-size: 19px; padding: 12px; }
+.qc-given { font-family: var(--font-q); text-align: center; max-width: 560px; margin: 0 0 4px; }
+@media (max-width: 760px) { .gre-modes { grid-template-columns: 1fr; } .gre-tips li { grid-template-columns: 1fr; } }
 .decklist button { display: flex; justify-content: space-between; gap: 8px; width: 100%; text-align: left; border: 0; border-bottom: 1px solid var(--line); background: transparent; padding: 9px 2px; cursor: pointer; font-size: 14.5px; font-weight: 600; }
 .decklist button small { font-family: var(--font-mono); color: var(--muted); font-weight: 400; font-size: 12px; }
 .decklist button:hover { color: var(--accent); }
@@ -813,7 +839,7 @@ window.addEventListener('error', function (e) { window.__ppErr((e.message || 'Sc
 const TESTS = [];
 function registerTest(t) { TESTS.push(t); }
 function hashStr(s) { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return (h >>> 0).toString(36); }
-function makeBank() { const bank = []; const add = lv => (cat, stem, ch, expl, k, o) => bank.push({ id: 's-' + cat + '-' + hashStr(stem + (o && o.psg ? '|' + o.psg : '')), cat, stem, ch, expl, k: k || 1, lv, psg: o && o.psg || undefined, alt: o && o.alt || undefined }); return [bank, add(1), add(2)]; }
+function makeBank() { const bank = []; const add = lv => (cat, stem, ch, expl, k, o) => bank.push({ id: 's-' + cat + '-' + hashStr(stem + (o && o.psg ? '|' + o.psg : '')), cat, stem, ch, expl, k: k || 1, lv, psg: o && o.psg || undefined, alt: o && o.alt || undefined, ord: o && o.ord || undefined, ci: o && o.ci || undefined }); return [bank, add(1), add(2)]; }
 /* shared question pools (used by several tests), reading passages, and constructed-response case histories */
 const POOLS = {};
 function pool(name) { return POOLS[name] || (POOLS[name] = makeBank()); }
@@ -1135,6 +1161,382 @@ const MFIG = (() => {
   }
   return { plane, boxSvg, lineEq, sys, parab, nline, box, barq, dotq, scat, lshape, triang, dist, fracline, grid100, pie, lineg, integ, mcN, Q, QN };
 })();
+
+/* ── gre/vocab.js ── */
+/* GRE vocabulary: [word, part of speech, definition, example sentence, synonyms, theme]. Original example sentences. */
+const GRE_VOCAB = (() => {
+const T = {
+  P: 'Praise & approval', C: 'Criticism & disapproval', S: 'Speech & expression', D: 'Truth, deception & doubt',
+  G: 'Change, growth & decline', B: 'Courage, fear & temperament', W: 'Wealth, generosity & thrift', K: 'Knowledge, wisdom & folly',
+  O: 'Agreement, conflict & order', Q: 'Size, amount & intensity', M: 'Secondary meanings',
+};
+const L = [
+/* Praise & approval */
+['acclaim', 'n./v.', 'enthusiastic public praise; to praise publicly', 'The director\'s first film won wide acclaim, though she insisted the editing team deserved most of it.', 'praise, applause, kudos', 'P'],
+['laud', 'v.', 'to praise highly', 'Critics lauded the novel for its restraint, noting that it never told readers how to feel.', 'extol, commend, praise', 'P'],
+['extol', 'v.', 'to praise enthusiastically', 'The coach extolled the team\'s defense but said little about its sluggish offense.', 'laud, exalt, glorify', 'P'],
+['eulogy', 'n.', 'a speech or piece of writing praising someone, especially one who has died', 'Her eulogy for her grandfather was funny as well as moving, which is exactly what he would have wanted.', 'tribute, encomium, panegyric', 'P'],
+['encomium', 'n.', 'a formal expression of high praise', 'The retirement dinner turned into an encomium so lavish that the honoree began to look embarrassed.', 'tribute, eulogy, accolade', 'P'],
+['panegyric', 'n.', 'an elaborate public speech or text of praise', 'The campaign biography was less a history than a panegyric, skipping every setback in the senator\'s career.', 'encomium, eulogy, paean', 'P'],
+['venerate', 'v.', 'to regard with great respect or reverence', 'Villagers venerated the old oak, and no one would cut even a dead branch from it.', 'revere, honor, esteem', 'P'],
+['revere', 'v.', 'to feel deep respect or admiration for', 'Young physicists revered her, yet she answered every letter as if it came from a colleague.', 'venerate, idolize, esteem', 'P'],
+['esteem', 'n./v.', 'respect and admiration; to regard highly', 'He held his first piano teacher in such esteem that he dedicated his debut album to her.', 'regard, respect, admiration', 'P'],
+['commend', 'v.', 'to praise formally; to entrust', 'The report commended the nurses for their calm during the power outage.', 'praise, applaud, laud', 'P'],
+['sanguine', 'adj.', 'optimistic, especially in a difficult situation', 'Despite the poor early results, the researchers remained sanguine that the trial would succeed.', 'hopeful, confident, upbeat', 'P'],
+['salutary', 'adj.', 'producing a beneficial effect, often after something unpleasant', 'Losing the scrimmage proved salutary: the team finally started practicing set plays.', 'beneficial, wholesome, healthful', 'P'],
+['exemplary', 'adj.', 'serving as a desirable model; very good', 'Her exemplary lab notes were copied and handed out to every new student.', 'model, ideal, commendable', 'P'],
+['estimable', 'adj.', 'worthy of great respect', 'The estimable judge was known for reading every brief in full, however long.', 'admirable, worthy, respectable', 'P'],
+['plaudit', 'n.', 'an expression of praise or approval (usually plural)', 'The volunteers wanted supplies, not plaudits, and said so politely at the ceremony.', 'acclaim, applause, praise', 'P'],
+['approbation', 'n.', 'approval or praise, often official', 'The plan went ahead only after it received the board\'s approbation.', 'approval, endorsement, sanction', 'P'],
+['felicitous', 'adj.', 'well chosen or suited to the circumstances; pleasing', 'Calling the cramped café "cozy" was a felicitous choice of words.', 'apt, fitting, happy', 'P'],
+['laudable', 'adj.', 'deserving praise, though not always successful', 'The goal of the policy was laudable; its results were another matter.', 'praiseworthy, commendable, admirable', 'P'],
+['paragon', 'n.', 'a model of excellence or of a particular quality', 'In the town\'s stories, the first mayor appears as a paragon of honesty.', 'model, exemplar, epitome', 'P'],
+['zealous', 'adj.', 'showing great energy or enthusiasm for a cause', 'A zealous volunteer, he knocked on every door in the district twice.', 'fervent, ardent, passionate', 'P'],
+
+/* Criticism & disapproval */
+['castigate', 'v.', 'to criticize or reprimand severely', 'The editorial castigated the council for approving the budget without a public hearing.', 'rebuke, chastise, berate', 'C'],
+['censure', 'n./v.', 'formal, strong disapproval; to express such disapproval', 'The senator faced censure from her own party after leaking the draft.', 'condemnation, rebuke, reproof', 'C'],
+['excoriate', 'v.', 'to criticize very harshly', 'Reviewers excoriated the sequel, calling it a lazy copy of the original.', 'lambaste, berate, savage', 'C'],
+['admonish', 'v.', 'to warn or reprimand firmly but mildly', 'The librarian admonished the students to keep their voices down, then returned to her desk.', 'caution, reprove, chide', 'C'],
+['reproach', 'n./v.', 'disapproval or disappointment; to express it', 'His behavior during the crisis was beyond reproach.', 'rebuke, reproof, blame', 'C'],
+['deride', 'v.', 'to mock or ridicule with contempt', 'Early critics derided the painting as childish; today it hangs in a national gallery.', 'ridicule, scoff at, mock', 'C'],
+['disparage', 'v.', 'to speak of as having little worth; belittle', 'She never disparaged her rivals in interviews, which only made her more popular.', 'belittle, denigrate, deprecate', 'C'],
+['denigrate', 'v.', 'to criticize unfairly; to defame', 'It is easy to denigrate the early pilots\' methods now that we have satellites.', 'disparage, belittle, malign', 'C'],
+['vilify', 'v.', 'to speak or write about in an abusive, defaming way', 'The tabloids vilified the referee for a call that replays later showed was correct.', 'malign, defame, slander', 'C'],
+['opprobrium', 'n.', 'harsh criticism or public disgrace', 'The company drew international opprobrium for dumping waste into the river.', 'disgrace, scorn, infamy', 'C'],
+['invective', 'n.', 'insulting, abusive language', 'The debate dissolved into invective, and the moderator ended it early.', 'abuse, vituperation, insults', 'C'],
+['diatribe', 'n.', 'a forceful, bitter verbal attack', 'His letter to the editor began calmly but ended as a diatribe against all modern architecture.', 'tirade, harangue, rant', 'C'],
+['vituperative', 'adj.', 'bitter and abusive', 'The vituperative comments under the article said more about the commenters than the author.', 'scathing, abusive, venomous', 'C'],
+['censorious', 'adj.', 'severely critical of others', 'A censorious neighbor reported every overgrown lawn to the homeowners\' association.', 'judgmental, hypercritical, faultfinding', 'C'],
+['captious', 'adj.', 'tending to find fault over trivial matters', 'The captious reviewer devoted half his column to a single misplaced comma.', 'carping, nitpicking, critical', 'C'],
+['pejorative', 'adj.', 'expressing contempt or disapproval', '"Bureaucrat" is often used as a pejorative, though it simply means an official.', 'derogatory, disparaging, belittling', 'C'],
+['reprobate', 'n.', 'an unprincipled person', 'In the play, the charming reprobate turns out to be the only honest character.', 'scoundrel, rogue, miscreant', 'C'],
+['chastise', 'v.', 'to rebuke or reprimand severely', 'The manager chastised himself more than anyone for the missed deadline.', 'scold, rebuke, upbraid', 'C'],
+['rebuke', 'n./v.', 'sharp disapproval; to express it', 'The court\'s ruling was a pointed rebuke to the agency\'s lawyers.', 'reprimand, reproof, admonition', 'C'],
+['upbraid', 'v.', 'to scold or criticize sharply', 'She upbraided the contractor for leaving the site unlocked overnight.', 'scold, reprimand, berate', 'C'],
+
+/* Speech & expression */
+['laconic', 'adj.', 'using very few words', 'His laconic reply, "Noted," left the committee unsure whether he agreed.', 'terse, concise, brief', 'S'],
+['terse', 'adj.', 'brief to the point of seeming abrupt', 'The terse email simply read: "Not approved."', 'curt, brusque, laconic', 'S'],
+['taciturn', 'adj.', 'habitually saying little', 'The taciturn farmer spoke more to his dogs than to his neighbors.', 'reticent, reserved, uncommunicative', 'S'],
+['reticent', 'adj.', 'not revealing one\'s thoughts or feelings readily', 'Usually reticent about her childhood, she surprised the class by describing it in detail.', 'reserved, restrained, taciturn', 'S'],
+['loquacious', 'adj.', 'very talkative', 'The loquacious tour guide turned a ten-minute walk into an hour-long lecture.', 'garrulous, talkative, voluble', 'S'],
+['garrulous', 'adj.', 'excessively talkative, especially about trivial matters', 'A garrulous seatmate made the six-hour flight feel twice as long.', 'loquacious, chatty, verbose', 'S'],
+['verbose', 'adj.', 'using more words than needed', 'The verbose report could have made its point in a single page.', 'wordy, prolix, long-winded', 'S'],
+['prolix', 'adj.', 'tediously lengthy in speech or writing', 'His prolix introductions left little time for the actual speakers.', 'verbose, wordy, rambling', 'S'],
+['succinct', 'adj.', 'clearly expressed in few words', 'Her succinct summary captured the whole meeting in three sentences.', 'concise, pithy, brief', 'S'],
+['pithy', 'adj.', 'brief, forceful, and meaningful', 'The poster\'s pithy slogan was easier to remember than the entire policy.', 'succinct, terse, epigrammatic', 'S'],
+['eloquent', 'adj.', 'fluent and persuasive in speaking or writing', 'Her eloquent closing argument left several jurors in tears.', 'articulate, expressive, persuasive', 'S'],
+['grandiloquent', 'adj.', 'pompous or extravagant in language', 'The grandiloquent speech promised a "new dawn of civic splendor" for a modest road project.', 'bombastic, pompous, high-flown', 'S'],
+['bombastic', 'adj.', 'high-sounding but with little meaning; inflated', 'Behind the bombastic advertising was an ordinary vacuum cleaner.', 'grandiloquent, pompous, overblown', 'S'],
+['euphemism', 'n.', 'a mild word substituted for one considered harsh', '"Rightsizing" is a euphemism the company used for laying off a third of its staff.', 'understatement, softening', 'S'],
+['vociferous', 'adj.', 'loud and forceful in expressing opinions', 'Vociferous protests from parents forced the school to restore the art program.', 'clamorous, strident, vocal', 'S'],
+['strident', 'adj.', 'loud and harsh; presenting a view forcefully', 'The strident tone of the petition may have cost it support among moderate readers.', 'shrill, harsh, vociferous', 'S'],
+['candid', 'adj.', 'truthful and straightforward; frank', 'In a candid interview, the founder admitted the first product had been a failure.', 'frank, forthright, blunt', 'S'],
+['equivocal', 'adj.', 'open to more than one interpretation; ambiguous, often deliberately', 'The spokesperson\'s equivocal answer neither confirmed nor denied the merger.', 'ambiguous, vague, evasive', 'S'],
+['rhetoric', 'n.', 'the art of persuasive language; often, language that impresses but lacks substance', 'Beneath the campaign\'s soaring rhetoric there were very few specific proposals.', 'oratory, eloquence, bombast', 'S'],
+['aphorism', 'n.', 'a short, wise saying', '"Measure twice, cut once" is an aphorism every carpenter knows.', 'maxim, adage, saying', 'S'],
+['digress', 'v.', 'to wander from the main subject', 'The professor often digressed into stories about her field work, which students loved.', 'stray, ramble, deviate', 'S'],
+
+/* Truth, deception & doubt */
+['veracity', 'n.', 'truthfulness; accuracy', 'The reporter checked the veracity of every quotation before publishing.', 'truthfulness, accuracy, honesty', 'D'],
+['candor', 'n.', 'the quality of being open and honest', 'The coach\'s candor about his own mistakes earned the players\' trust.', 'frankness, honesty, openness', 'D'],
+['disingenuous', 'adj.', 'not sincere; pretending to know less than one does', 'It was disingenuous of him to act surprised; he had written the memo himself.', 'insincere, deceitful, two-faced', 'D'],
+['duplicity', 'n.', 'deceitfulness; double-dealing', 'The spy\'s duplicity was uncovered when both governments compared notes.', 'deceit, treachery, double-dealing', 'D'],
+['mendacious', 'adj.', 'not telling the truth; lying', 'The mendacious advertisement claimed the cream erased wrinkles overnight.', 'dishonest, lying, untruthful', 'D'],
+['specious', 'adj.', 'seemingly reasonable but actually wrong', 'The argument was specious: it confused correlation with cause.', 'misleading, fallacious, plausible but false', 'D'],
+['spurious', 'adj.', 'false or fake; not what it claims to be', 'The museum withdrew the letter once historians showed its signature was spurious.', 'bogus, counterfeit, fraudulent', 'D'],
+['apocryphal', 'adj.', 'of doubtful authenticity, though widely repeated', 'The story that Einstein failed math is apocryphal.', 'legendary, unverified, fictitious', 'D'],
+['dissemble', 'v.', 'to conceal one\'s true motives or feelings', 'Asked about the missing funds, the treasurer dissembled, talking only about the weather.', 'feign, pretend, dissimulate', 'D'],
+['feign', 'v.', 'to pretend to be affected by or to have', 'The cat feigned indifference but crept closer to the food bowl.', 'fake, simulate, affect', 'D'],
+['guile', 'n.', 'sly or cunning intelligence', 'Without guile of any kind, the child simply asked why the emperor wasn\'t wearing clothes.', 'cunning, craftiness, wiliness', 'D'],
+['artless', 'adj.', 'without deception or effort; natural and simple', 'Her artless delight at the gift was more touching than any thank-you note.', 'ingenuous, guileless, sincere', 'D'],
+['ingenuous', 'adj.', 'innocent and unsuspecting; naive', 'The ingenuous new hire believed the salesman\'s promise of "free" upgrades.', 'naive, trusting, artless', 'D'],
+['credulous', 'adj.', 'too ready to believe things', 'Only a credulous reader would accept the website\'s claim that the moon landing was staged.', 'gullible, naive, trusting', 'D'],
+['skeptical', 'adj.', 'not easily convinced; doubting', 'Skeptical of the miracle diet, she read the study the company kept citing.', 'doubtful, dubious, incredulous', 'D'],
+['dubious', 'adj.', 'doubtful; of questionable value or truth', 'The record was set under dubious conditions, with no official timer present.', 'questionable, suspect, doubtful', 'D'],
+['chicanery', 'n.', 'trickery used to achieve a goal', 'The election was overturned after investigators found ballot chicanery.', 'trickery, deception, sharp practice', 'D'],
+['charlatan', 'n.', 'a person falsely claiming special knowledge or skill', 'The "healer" was exposed as a charlatan when his potions proved to be colored water.', 'fraud, quack, impostor', 'D'],
+['prevaricate', 'v.', 'to speak evasively; to avoid the truth', 'When asked whether he had read the contract, he prevaricated rather than admit he hadn\'t.', 'equivocate, hedge, evade', 'D'],
+['corroborate', 'v.', 'to confirm or support with evidence', 'Security footage corroborated the witness\'s account.', 'confirm, verify, substantiate', 'D'],
+['substantiate', 'v.', 'to provide evidence proving something', 'The journalist could not substantiate the rumor and dropped the story.', 'prove, verify, corroborate', 'D'],
+['debunk', 'v.', 'to expose the falseness of', 'The science teacher debunked the myth that we use only ten percent of our brains.', 'refute, discredit, disprove', 'D'],
+
+/* Change, growth & decline */
+['ephemeral', 'adj.', 'lasting a very short time', 'Fame on social media is ephemeral; most viral stars are forgotten within a month.', 'fleeting, transient, short-lived', 'G'],
+['transient', 'adj.', 'lasting only a short time; passing through', 'The town\'s transient summer population doubled the line at the bakery.', 'temporary, ephemeral, fleeting', 'G'],
+['evanescent', 'adj.', 'quickly fading or disappearing', 'The evanescent rainbow vanished before anyone could take a photo.', 'fleeting, vanishing, ephemeral', 'G'],
+['mercurial', 'adj.', 'subject to sudden, unpredictable changes of mood', 'The mercurial chef might praise a dish at lunch and throw it out at dinner.', 'volatile, capricious, fickle', 'G'],
+['capricious', 'adj.', 'given to sudden, unaccountable changes', 'Capricious weather in the mountains forced the hikers to turn back twice.', 'fickle, erratic, whimsical', 'G'],
+['volatile', 'adj.', 'liable to change rapidly and unpredictably; explosive', 'Prices in the volatile market swung by ten percent in a single afternoon.', 'unstable, erratic, explosive', 'G'],
+['immutable', 'adj.', 'unchanging over time; unable to be changed', 'The founders treated the club\'s rules as immutable, though they were only five years old.', 'fixed, unalterable, permanent', 'G'],
+['inexorable', 'adj.', 'impossible to stop or prevent', 'The inexorable rise of the tide forced the sandcastle builders back up the beach.', 'relentless, unstoppable, inevitable', 'G'],
+['burgeon', 'v.', 'to grow or expand rapidly', 'The burgeoning demand for electric bikes caught the small shop off guard.', 'flourish, boom, mushroom', 'G'],
+['proliferate', 'v.', 'to increase rapidly in number', 'Food trucks proliferated downtown after the city simplified permits.', 'multiply, spread, mushroom', 'G'],
+['wane', 'v./n.', 'to decrease gradually in size or strength', 'Interest in the show waned after its second season.', 'decline, diminish, ebb', 'G'],
+['atrophy', 'v./n.', 'to waste away from lack of use; a weakening', 'Without practice, his Spanish began to atrophy within a year.', 'wither, degenerate, weaken', 'G'],
+['dwindle', 'v.', 'to diminish gradually', 'Their savings dwindled during the long strike.', 'shrink, decrease, wane', 'G'],
+['abate', 'v.', 'to become less intense or widespread', 'The ferry waited until the storm abated before leaving port.', 'subside, lessen, ease', 'G'],
+['exacerbate', 'v.', 'to make a problem worse', 'Scratching only exacerbates a mosquito bite.', 'aggravate, worsen, intensify', 'G'],
+['ameliorate', 'v.', 'to make something bad better', 'New lighting ameliorated, but did not solve, the safety problems in the garage.', 'improve, alleviate, mitigate', 'G'],
+['mitigate', 'v.', 'to make less severe or painful', 'Planting trees along the street mitigated the summer heat.', 'alleviate, lessen, reduce', 'G'],
+['alleviate', 'v.', 'to make suffering or a problem less severe', 'The new bus route alleviated crowding on the subway.', 'ease, relieve, mitigate', 'G'],
+['nascent', 'adj.', 'just coming into existence and beginning to develop', 'The nascent recycling program had just three bins and one enthusiastic volunteer.', 'emerging, budding, embryonic', 'G'],
+['vestigial', 'adj.', 'remaining as a trace of something that once existed', 'The dinner bell in the hallway is vestigial; no one has rung it in decades.', 'residual, remnant, leftover', 'G'],
+['obsolete', 'adj.', 'no longer produced or used; out of date', 'Fax machines are nearly obsolete in most offices.', 'outdated, outmoded, antiquated', 'G'],
+['anachronism', 'n.', 'something out of its proper time period', 'The wristwatch on the Roman soldier was a glaring anachronism in the film.', 'misplacement, archaism', 'G'],
+
+/* Courage, fear & temperament */
+['intrepid', 'adj.', 'fearless; adventurous', 'An intrepid photographer, she climbed the volcano\'s rim to capture the eruption.', 'fearless, bold, dauntless', 'B'],
+['audacious', 'adj.', 'showing willingness to take bold risks; sometimes rudely bold', 'The startup\'s audacious plan was to compete with the largest airline on its busiest route.', 'daring, bold, brazen', 'B'],
+['timorous', 'adj.', 'showing nervousness or lack of confidence', 'The timorous puppy hid under the bed whenever the doorbell rang.', 'timid, fearful, shy', 'B'],
+['diffident', 'adj.', 'modest or shy from a lack of self-confidence', 'The diffident student rarely spoke, but her written work was brilliant.', 'shy, unassertive, self-effacing', 'B'],
+['pusillanimous', 'adj.', 'cowardly; lacking courage', 'Critics called the committee pusillanimous for postponing the vote yet again.', 'cowardly, timid, spineless', 'B'],
+['craven', 'adj.', 'contemptibly lacking in courage', 'Blaming the intern for his own error was a craven move.', 'cowardly, spineless, pusillanimous', 'B'],
+['stoic', 'adj./n.', 'enduring pain or hardship without complaint', 'She remained stoic through the long recovery, joking with the nurses every morning.', 'impassive, uncomplaining, patient', 'B'],
+['phlegmatic', 'adj.', 'calm and unemotional by temperament', 'The phlegmatic pilot announced the engine trouble as if reading a weather report.', 'calm, unflappable, imperturbable', 'B'],
+['imperturbable', 'adj.', 'unable to be upset or excited; calm', 'The imperturbable referee ignored the crowd\'s boos completely.', 'unflappable, composed, serene', 'B'],
+['equanimity', 'n.', 'mental calmness, especially in difficulty', 'He accepted the rejection with equanimity and started a new draft the next day.', 'composure, calm, poise', 'B'],
+['placid', 'adj.', 'calm and peaceful; not easily upset', 'The placid lake reflected the mountains perfectly.', 'calm, tranquil, serene', 'B'],
+['irascible', 'adj.', 'easily made angry', 'The irascible landlord shouted at anyone who parked near his garage.', 'irritable, hot-tempered, testy', 'B'],
+['choleric', 'adj.', 'bad-tempered; irritable', 'His choleric outbursts at meetings drove away his best employees.', 'irascible, cranky, quick-tempered', 'B'],
+['truculent', 'adj.', 'eager to argue or fight; aggressively defiant', 'The truculent witness challenged every question the lawyer asked.', 'belligerent, combative, defiant', 'B'],
+['belligerent', 'adj.', 'hostile and aggressive', 'The belligerent fan was escorted out of the stadium in the third quarter.', 'hostile, combative, pugnacious', 'B'],
+['pugnacious', 'adj.', 'eager to quarrel or fight', 'Pugnacious by nature, the senator relished every debate.', 'combative, belligerent, truculent', 'B'],
+['obstinate', 'adj.', 'stubbornly refusing to change one\'s opinion', 'The obstinate toddler refused to wear anything but his rain boots.', 'stubborn, intransigent, obdurate', 'B'],
+['intransigent', 'adj.', 'unwilling to change one\'s views or compromise', 'Talks stalled because both sides remained intransigent on wages.', 'uncompromising, inflexible, obstinate', 'B'],
+['obdurate', 'adj.', 'stubbornly refusing to change, especially despite pleas', 'The obdurate official refused to extend the deadline, even for a family emergency.', 'unyielding, inflexible, hard-hearted', 'B'],
+['tractable', 'adj.', 'easy to control or influence; manageable', 'The once-difficult problem became tractable after they split it into smaller steps.', 'manageable, compliant, docile', 'B'],
+['docile', 'adj.', 'ready to accept control or instruction; submissive', 'The docile horse was perfect for first-time riders.', 'compliant, meek, obedient', 'B'],
+['lethargic', 'adj.', 'sluggish and apathetic', 'The heat left everyone lethargic, so the hike was postponed.', 'sluggish, listless, torpid', 'B'],
+
+/* Wealth, generosity & thrift */
+['parsimonious', 'adj.', 'unwilling to spend money; extremely frugal', 'The parsimonious owner reused staples to save a few cents.', 'stingy, miserly, tightfisted', 'W'],
+['frugal', 'adj.', 'careful and economical with money or resources', 'Frugal habits let them buy their house without a loan.', 'thrifty, economical, sparing', 'W'],
+['prodigal', 'adj./n.', 'spending money or resources freely and recklessly; a spendthrift', 'The prodigal heir spent his inheritance in two years.', 'wasteful, extravagant, profligate', 'W'],
+['profligate', 'adj.', 'recklessly extravagant or wasteful', 'Profligate use of water during the drought led to new restrictions.', 'wasteful, prodigal, spendthrift', 'W'],
+['munificent', 'adj.', 'very generous', 'A munificent donor paid for the entire new library wing.', 'generous, bountiful, liberal', 'W'],
+['magnanimous', 'adj.', 'generous or forgiving, especially toward a rival', 'In a magnanimous speech, the winner praised her opponent\'s campaign.', 'generous, gracious, noble', 'W'],
+['largess', 'n.', 'generosity in giving money or gifts (also largesse)', 'The festival depends on the largess of local businesses.', 'generosity, bounty, philanthropy', 'W'],
+['avarice', 'n.', 'extreme greed for wealth', 'In the fable, the merchant\'s avarice leads him to lose everything.', 'greed, cupidity, covetousness', 'W'],
+['penurious', 'adj.', 'extremely poor; also, stingy', 'Despite his penurious childhood, he became a generous philanthropist.', 'impoverished, destitute; miserly', 'W'],
+['indigent', 'adj.', 'poor; needy', 'The clinic offers free care to indigent patients.', 'impoverished, destitute, needy', 'W'],
+['opulent', 'adj.', 'luxurious and costly', 'The hotel\'s opulent lobby featured marble floors and gold-leaf ceilings.', 'lavish, luxurious, sumptuous', 'W'],
+['ostentatious', 'adj.', 'showy in a way meant to impress', 'The ostentatious wedding included a fireworks display and a helicopter arrival.', 'showy, flashy, pretentious', 'W'],
+['austere', 'adj.', 'severe or strict; plain, without decoration', 'The monks lived in austere cells with a bed, a desk, and nothing else.', 'stark, spartan, severe', 'W'],
+['lavish', 'adj./v.', 'rich and plentiful; to give generously', 'She lavished attention on her garden all summer.', 'sumptuous, generous, bountiful', 'W'],
+['mercenary', 'adj./n.', 'motivated chiefly by money; a hired soldier', 'His mercenary approach to friendship meant he called only when he needed something.', 'greedy, grasping, venal', 'W'],
+['venal', 'adj.', 'open to bribery; corrupt', 'The venal inspector approved any building for the right price.', 'corrupt, bribable, dishonest', 'W'],
+['philanthropic', 'adj.', 'seeking to promote the welfare of others, especially by donating money', 'Her philanthropic foundation funds after-school programs.', 'charitable, benevolent, generous', 'W'],
+['remuneration', 'n.', 'payment for work or services', 'The internship offers experience but little remuneration.', 'pay, compensation, wages', 'W'],
+['pecuniary', 'adj.', 'relating to money', 'He insisted his interest in the project was artistic, not pecuniary.', 'financial, monetary, fiscal', 'W'],
+['solvent', 'adj.', 'having enough money to pay debts', 'Cutting costs kept the bookstore solvent through the slow winter.', 'financially sound, debt-free', 'W'],
+
+/* Knowledge, wisdom & folly */
+['erudite', 'adj.', 'having or showing great knowledge', 'The erudite lecture drew on Greek, Persian, and Chinese sources.', 'learned, scholarly, knowledgeable', 'K'],
+['pedantic', 'adj.', 'overly concerned with minor details or rules', 'It was pedantic to correct the toast\'s grammar at the wedding.', 'fussy, nitpicking, hair-splitting', 'K'],
+['didactic', 'adj.', 'intended to teach, sometimes in a preachy way', 'The film\'s didactic ending felt like a lecture on recycling.', 'instructive, educational, preachy', 'K'],
+['sagacious', 'adj.', 'having keen judgment; wise', 'The sagacious investor sold just before the market collapsed.', 'wise, shrewd, astute', 'K'],
+['astute', 'adj.', 'able to assess situations accurately and turn them to one\'s advantage', 'An astute observer noticed the price tags had been changed.', 'shrewd, perceptive, sharp', 'K'],
+['perspicacious', 'adj.', 'having keen insight or understanding', 'The perspicacious editor spotted the plot hole no one else had seen.', 'perceptive, discerning, astute', 'K'],
+['judicious', 'adj.', 'having or showing good judgment', 'A judicious use of humor made the serious talk easier to hear.', 'wise, prudent, sensible', 'K'],
+['prudent', 'adj.', 'acting with care and thought for the future', 'It is prudent to back up your files before updating the software.', 'wise, cautious, sensible', 'K'],
+['sophomoric', 'adj.', 'conceited and overconfident but immature', 'His sophomoric jokes fell flat with the older audience.', 'juvenile, immature, puerile', 'K'],
+['fatuous', 'adj.', 'silly and pointless', 'The fatuous question wasted ten minutes of the press conference.', 'foolish, inane, vacuous', 'K'],
+['inane', 'adj.', 'lacking sense or meaning; silly', 'The inane chatter of the radio host eventually drove her to switch stations.', 'silly, senseless, fatuous', 'K'],
+['obtuse', 'adj.', 'slow to understand; insensitive (also: an angle greater than 90°)', 'He was not obtuse; he simply pretended not to understand the hint.', 'slow-witted, dense, imperceptive', 'K'],
+['esoteric', 'adj.', 'understood by only a small group with special knowledge', 'The forum debated esoteric details of medieval clockmaking.', 'obscure, arcane, recondite', 'K'],
+['arcane', 'adj.', 'mysterious; known to few', 'The tax code is full of arcane rules that even accountants check twice.', 'esoteric, obscure, recondite', 'K'],
+['abstruse', 'adj.', 'difficult to understand; obscure', 'The philosopher\'s abstruse prose discouraged most readers.', 'obscure, recondite, esoteric', 'K'],
+['recondite', 'adj.', 'little known; requiring deep knowledge', 'Her dissertation explored a recondite corner of Byzantine law.', 'obscure, abstruse, arcane', 'K'],
+['dilettante', 'n.', 'a person who dabbles in a subject without serious study', 'A dilettante in painting, he owned every brush but finished few canvases.', 'amateur, dabbler, trifler', 'K'],
+['neophyte', 'n.', 'a beginner; a new convert', 'The climbing gym offers a special course for neophytes.', 'novice, beginner, tyro', 'K'],
+['novice', 'n.', 'a person new to an activity', 'Even a novice can make bread with this recipe.', 'beginner, neophyte, apprentice', 'K'],
+['empirical', 'adj.', 'based on observation or experiment rather than theory', 'The claim had intuitive appeal but no empirical support.', 'observed, experimental, evidence-based', 'K'],
+['dogmatic', 'adj.', 'asserting opinions as certainly true, without considering evidence', 'His dogmatic insistence that the old method was best ended the discussion.', 'opinionated, doctrinaire, rigid', 'K'],
+['heterodox', 'adj.', 'not conforming to accepted beliefs', 'The economist\'s heterodox views were dismissed at first and later widely adopted.', 'unorthodox, dissenting, heretical', 'K'],
+
+/* Agreement, conflict & order */
+['acquiesce', 'v.', 'to accept something reluctantly but without protest', 'After a long argument, the board acquiesced to the new schedule.', 'consent, comply, yield', 'O'],
+['accede', 'v.', 'to agree to a demand or request', 'The landlord finally acceded to the tenants\' request for repairs.', 'consent, agree, assent', 'O'],
+['concord', 'n.', 'agreement or harmony', 'The treaty ushered in a rare period of concord between the two cities.', 'harmony, accord, agreement', 'O'],
+['amenable', 'adj.', 'open and responsive to suggestion', 'The manager was amenable to flexible hours as long as deadlines were met.', 'agreeable, receptive, willing', 'O'],
+['conciliatory', 'adj.', 'intended to placate or reconcile', 'The conciliatory letter apologized for the delay and offered a refund.', 'placatory, appeasing, peacemaking', 'O'],
+['placate', 'v.', 'to make less angry; to appease', 'The airline placated stranded passengers with meal vouchers.', 'appease, pacify, mollify', 'O'],
+['mollify', 'v.', 'to soothe the anger of; to soften', 'Nothing the waiter said could mollify the furious diner.', 'pacify, placate, soothe', 'O'],
+['appease', 'v.', 'to pacify by giving in to demands', 'Giving the bully your lunch will not appease him for long.', 'placate, conciliate, satisfy', 'O'],
+['rapprochement', 'n.', 'the reestablishment of friendly relations', 'The trade deal signaled a rapprochement between the long-hostile neighbors.', 'reconciliation, détente, reunion', 'O'],
+['discord', 'n.', 'disagreement; lack of harmony', 'Discord within the band led to its breakup after the second album.', 'conflict, strife, dissension', 'O'],
+['acrimony', 'n.', 'bitterness or ill feeling', 'The divorce proceeded with surprisingly little acrimony.', 'bitterness, rancor, hostility', 'O'],
+['rancor', 'n.', 'long-lasting bitterness or resentment', 'He spoke of his former partner without rancor.', 'resentment, bitterness, animosity', 'O'],
+['enmity', 'n.', 'the state of being actively opposed; hostility', 'The two families nursed an enmity that outlasted anyone\'s memory of its cause.', 'hostility, antagonism, animosity', 'O'],
+['contentious', 'adj.', 'likely to cause disagreement; quarrelsome', 'The contentious proposal divided the town into two camps.', 'controversial, disputed, divisive', 'O'],
+['factious', 'adj.', 'relating to or inclined toward dissension within a group', 'Factious disputes kept the committee from passing anything.', 'divisive, discordant, sectarian', 'O'],
+['polemic', 'n.', 'a strong written or spoken attack on an opinion', 'His book is less a history than a polemic against modern farming.', 'diatribe, tirade, critique', 'O'],
+['dissent', 'n./v.', 'disagreement with an official or majority view; to disagree', 'Two justices filed a sharp dissent.', 'disagreement, objection, protest', 'O'],
+['schism', 'n.', 'a split between groups, often over beliefs', 'The schism over the new rules led half the members to found a rival club.', 'split, rift, division', 'O'],
+['bellicose', 'adj.', 'eager to fight; warlike', 'The general\'s bellicose speech alarmed diplomats on both sides.', 'warlike, hostile, aggressive', 'O'],
+['quell', 'v.', 'to put an end to, usually by force; to calm', 'Officials quelled the rumors with a clear public statement.', 'suppress, subdue, quash', 'O'],
+['anarchy', 'n.', 'a state of disorder due to absence of authority', 'When the teacher left, the classroom descended into cheerful anarchy.', 'chaos, lawlessness, disorder', 'O'],
+['hegemony', 'n.', 'dominance of one group or state over others', 'The empire\'s hegemony over the region lasted two centuries.', 'dominance, supremacy, control', 'O'],
+
+/* Size, amount & intensity */
+['copious', 'adj.', 'abundant; plentiful', 'She took copious notes, filling two notebooks during the course.', 'abundant, plentiful, ample', 'Q'],
+['profuse', 'adj.', 'plentiful; abundant, often excessively', 'He offered profuse apologies for the late delivery.', 'copious, lavish, abundant', 'Q'],
+['myriad', 'adj./n.', 'countless or extremely many; a great number', 'The reef supports a myriad of fish species.', 'countless, innumerable, multitudinous', 'Q'],
+['plethora', 'n.', 'an excess or large amount of something', 'A plethora of streaming services makes choosing a show harder, not easier.', 'excess, glut, surplus', 'Q'],
+['dearth', 'n.', 'a scarcity or lack', 'A dearth of affordable housing pushes young families out of the city.', 'scarcity, shortage, paucity', 'Q'],
+['paucity', 'n.', 'the presence of something in small quantities; scarcity', 'The paucity of evidence made the case hard to prosecute.', 'scarcity, dearth, shortage', 'Q'],
+['scant', 'adj.', 'barely sufficient; meager', 'The proposal received scant attention until a reporter wrote about it.', 'meager, limited, little', 'Q'],
+['meager', 'adj.', 'lacking in quantity or quality', 'A meager harvest forced the farmers to buy grain.', 'scant, sparse, paltry', 'Q'],
+['paltry', 'adj.', 'small or meaningless; petty', 'The company offered a paltry raise that did not match inflation.', 'meager, trifling, negligible', 'Q'],
+['prodigious', 'adj.', 'remarkably great in extent, size, or degree', 'The pianist had a prodigious memory and never used sheet music.', 'enormous, extraordinary, phenomenal', 'Q'],
+['commodious', 'adj.', 'roomy and comfortable', 'The commodious cabin easily slept eight.', 'spacious, roomy, capacious', 'Q'],
+['minuscule', 'adj.', 'extremely small', 'The risk is minuscule, but the airline still checks every bolt.', 'tiny, minute, infinitesimal', 'Q'],
+['negligible', 'adj.', 'so small or unimportant it can be ignored', 'The difference in cost between the two plans is negligible.', 'insignificant, trivial, minimal', 'Q'],
+['surfeit', 'n.', 'an excessive amount', 'A surfeit of sweets at the party left the children cranky.', 'excess, glut, overabundance', 'Q'],
+['dilute', 'v./adj.', 'to make weaker by adding liquid; weakened', 'Compromises diluted the bill until it accomplished almost nothing.', 'weaken, water down, thin', 'Q'],
+['augment', 'v.', 'to make greater by adding to', 'She augmented her income by tutoring on weekends.', 'increase, supplement, boost', 'Q'],
+['attenuate', 'v.', 'to reduce in force, effect, or thickness', 'Thick walls attenuated the noise from the highway.', 'weaken, reduce, diminish', 'Q'],
+['vehement', 'adj.', 'showing strong feeling; forceful', 'She issued a vehement denial of the accusation.', 'forceful, passionate, fervent', 'Q'],
+['fervent', 'adj.', 'having or displaying passionate intensity', 'Fervent supporters waited all night for tickets.', 'passionate, ardent, zealous', 'Q'],
+['tepid', 'adj.', 'only slightly warm; lacking enthusiasm', 'The audience\'s tepid applause told the comedian everything he needed to know.', 'lukewarm, halfhearted, unenthusiastic', 'Q'],
+['languid', 'adj.', 'displaying a pleasant lack of energy; slow', 'They spent a languid afternoon floating on the river.', 'relaxed, leisurely, unhurried', 'Q'],
+['torpor', 'n.', 'a state of inactivity or sluggishness', 'After the huge meal, the family sank into a contented torpor.', 'lethargy, inertia, sluggishness', 'Q'],
+
+/* Secondary meanings: common words with less common GRE senses */
+['qualify', 'v.', 'to limit or modify a statement (also: to meet requirements)', 'She qualified her praise by noting that the second half of the book dragged.', 'limit, restrict, temper', 'M'],
+['temper', 'v.', 'to moderate or soften', 'He tempered his criticism with genuine compliments.', 'moderate, soften, mitigate', 'M'],
+['check', 'v./n.', 'to stop or slow the progress of; a restraint', 'Courts act as a check on the power of the legislature.', 'curb, restrain, limit', 'M'],
+['champion', 'v.', 'to support or defend a cause', 'She has championed library funding for twenty years.', 'advocate, support, promote', 'M'],
+['sanction', 'v./n.', 'to authorize or approve; also, a penalty', 'The league sanctioned the new tournament. (In another context, sanctions are penalties.)', 'approve, authorize; penalty', 'M'],
+['flag', 'v.', 'to lose energy or enthusiasm; to weaken', 'The runners\' pace flagged in the final mile.', 'tire, wane, droop', 'M'],
+['base', 'adj.', 'without moral principles; low', 'Betraying a friend for money is a base act.', 'ignoble, contemptible, mean', 'M'],
+['wanting', 'adj.', 'lacking; not up to standard', 'The proposal was found wanting in practical detail.', 'deficient, lacking, inadequate', 'M'],
+['discriminating', 'adj.', 'having good taste or judgment', 'Discriminating readers will notice the author\'s subtle allusions.', 'discerning, perceptive, selective', 'M'],
+['fell', 'adj./v.', 'fierce or deadly (archaic); also, to cut down', 'The ax felled the tree in three swings. (In older texts: "one fell swoop.")', 'cruel, deadly; cut down', 'M'],
+['arrest', 'v.', 'to stop or check the progress of', 'The new treatment arrested the spread of the disease.', 'halt, stop, check', 'M'],
+['appreciate', 'v.', 'to increase in value (also: to be grateful for)', 'Land in the area appreciated rapidly after the rail line opened.', 'grow, rise, gain value', 'M'],
+['economy', 'n.', 'careful, efficient use of resources or words', 'The poem\'s economy is striking: every word does work.', 'thrift, efficiency, concision', 'M'],
+['pedestrian', 'adj.', 'dull; ordinary; lacking imagination', 'The plot was pedestrian, but the acting was superb.', 'ordinary, commonplace, prosaic', 'M'],
+['provincial', 'adj.', 'narrow-minded; unsophisticated', 'He mocked the town as provincial, though he had never visited it.', 'parochial, insular, narrow', 'M'],
+['catholic', 'adj.', '(lowercase) broad in scope; universal', 'Her catholic taste in music ranged from opera to punk.', 'wide-ranging, eclectic, comprehensive', 'M'],
+['muster', 'v.', 'to gather or summon (support, courage, troops)', 'She mustered the courage to ask for a raise.', 'summon, gather, rally', 'M'],
+['tender', 'v.', 'to offer formally', 'The minister tendered her resignation on Monday.', 'offer, submit, proffer', 'M'],
+['brook', 'v.', 'to tolerate (usually with a negative)', 'The coach would brook no excuses for missed practices.', 'tolerate, allow, stand', 'M'],
+['cow', 'v.', 'to intimidate', 'The witness was not cowed by the lawyer\'s aggressive questions.', 'intimidate, daunt, browbeat', 'M'],
+['stem', 'v.', 'to stop or restrict the flow of (also: to originate from)', 'Volunteers piled sandbags to stem the flood.', 'stop, staunch, check', 'M'],
+['entertain', 'v.', 'to give consideration to an idea', 'The board refused to entertain the possibility of a merger.', 'consider, contemplate, harbor', 'M'],
+];
+return { themes: T, words: L.map(([w, p, d, e, s, t], i) => ({ i, w, p, d, e, s, t, th: T[t] })) };
+})();
+
+/* ── gre/sheets.js ── */
+/* GRE math formula sheets and test guide. The real GRE gives no formula sheet, so these are for memorizing. */
+const GRE_SHEETS = [
+  { title: 'Numbers and arithmetic', note: 'Know these cold; GRE questions test them in disguise.', cols: ['Idea', 'Rule', 'Example'], rows: [
+    ['Integers', '…, −2, −1, 0, 1, 2, …  Zero is even, and it is neither positive nor negative.', '0 is an even integer'],
+    ['Primes', 'Exactly two positive divisors. 2 is the only even prime; 1 is not prime.', '2, 3, 5, 7, 11, 13, 17, 19, 23, 29'],
+    ['Divisibility', 'By 3: digit sum divisible by 3. By 4: last two digits. By 9: digit sum divisible by 9.', '4,236: 4 + 2 + 3 + 6 = 15, so divisible by 3, not 9'],
+    ['Number of divisors', 'If n = p^(a) q^(b) …, n has (a + 1)(b + 1)… positive divisors.', '72 = 2³ · 3² has 4 × 3 = 12 divisors'],
+    ['GCD and LCM', 'GCD × LCM = product of the two numbers.', 'GCD(12, 18) = 6, LCM = 36; 6 × 36 = 216'],
+    ['Remainders', 'n = qd + r with 0 ≤ r < d.', '17 ÷ 5: 17 = 3 · 5 + 2'],
+    ['Even/odd', 'even ± even = even; odd ± odd = even; odd × odd = odd; any × even = even', '3 + 5 = 8; 3 × 5 = 15'],
+    ['Consecutive integers', 'Sum = (number of terms) × (average of first and last).', '1 to 100: 100 × 50.5 = 5,050'],
+    ['Fractions', 'a/b ÷ c/d = a/b × d/c. Compare by cross-multiplying.', '3/7 vs 4/9: 27 < 28, so 3/7 < 4/9'],
+    ['Repeating decimals', '0.ababab… = ab/99', '0.272727… = 27/99 = 3/11'],
+    ['Absolute value', '|x| is distance from 0. |x − a| < b means a − b < x < a + b.', '|x − 3| < 2 → 1 < x < 5'],
+  ] },
+  { title: 'Exponents and roots', cols: ['Rule', 'Formula', 'Example'], rows: [
+    ['Product', 'a^(m) · a^(n) = a^(m + n)', '2³ · 2⁴ = 2⁷ = 128'],
+    ['Quotient', 'a^(m) / a^(n) = a^(m − n)', '5⁶ / 5⁴ = 25'],
+    ['Power of a power', '(a^(m))^(n) = a^(mn)', '(3²)³ = 3⁶ = 729'],
+    ['Zero and negative', 'a⁰ = 1 (a ≠ 0); a^(−n) = 1/a^(n)', '2^(−3) = 1/8'],
+    ['Fractional', 'a^(m/n) = (ⁿ√a)^(m)', '8^(2/3) = 4'],
+    ['Roots', '√(ab) = √a · √b; √(a/b) = √a / √b; √a + √b ≠ √(a + b)', '√50 = 5√2'],
+    ['Same base', 'Rewrite with a common base, then set exponents equal.', '4^(x) = 8 → 2^(2x) = 2³ → x = 3/2'],
+    ['Numbers between 0 and 1', 'Squaring makes them smaller; square roots make them larger.', '(1/2)² = 1/4 < 1/2'],
+  ] },
+  { title: 'Algebra', cols: ['Idea', 'Formula', 'Notes'], rows: [
+    ['Special products', '(a + b)² = a² + 2ab + b²;  (a − b)² = a² − 2ab + b²;  (a + b)(a − b) = a² − b²', 'Difference of squares appears constantly'],
+    ['Quadratic formula', 'x = [−b ± √(b² − 4ac)] / 2a', 'Discriminant b² − 4ac tells how many real roots'],
+    ['Sum and product of roots', 'For x² + bx + c = 0: sum = −b, product = c', 'x² − 5x + 6 = 0: roots 2 and 3'],
+    ['Slope', 'm = (y₂ − y₁)/(x₂ − x₁)', 'Parallel: equal slopes. Perpendicular: product −1'],
+    ['Line', 'y = mx + b (slope-intercept); y − y₁ = m(x − x₁)', 'b is the y-intercept'],
+    ['Distance and midpoint', 'd = √((x₂ − x₁)² + (y₂ − y₁)²); midpoint ((x₁ + x₂)/2, (y₁ + y₂)/2)', 'Pythagorean theorem in disguise'],
+    ['Inequalities', 'Multiplying or dividing by a negative flips the sign.', '−2x > 6 → x < −3'],
+    ['Functions', 'f(x) = … means substitute. f(g(x)): apply g first.', 'f(x) = 2x + 1, g(x) = x²: f(g(3)) = 19'],
+    ['Arithmetic sequence', 'aₙ = a₁ + (n − 1)d; sum = n(a₁ + aₙ)/2', '3, 7, 11, …: a₁₀ = 39'],
+    ['Geometric sequence', 'aₙ = a₁ · r^(n − 1)', '2, 6, 18, …: a₅ = 162'],
+  ] },
+  { title: 'Percents, ratios, and word problems', cols: ['Topic', 'Formula', 'Example'], rows: [
+    ['Percent change', '(new − old) / old × 100%', '40 → 50 is a 25% increase'],
+    ['Successive percents', 'Multiply the factors; do not add the percents.', '+20% then −20%: 1.2 × 0.8 = 0.96, a 4% decrease'],
+    ['Percent of', 'x% of y = y% of x', '8% of 50 = 50% of 8 = 4'],
+    ['Ratio a : b', 'Parts are a/(a + b) and b/(a + b) of the total.', '3 : 5 with 40 total → 15 and 25'],
+    ['Rate', 'distance = rate × time;  work = rate × time', '60 mi/h for 2.5 h = 150 mi'],
+    ['Average speed', 'total distance ÷ total time (not the average of the speeds)', '60 out, 40 back over equal distances → 48 mi/h'],
+    ['Combined work', '1/t = 1/a + 1/b', 'Jobs alone in 3 h and 6 h → together 2 h'],
+    ['Simple interest', 'I = Prt', '$1,000 at 5% for 3 yr → $150'],
+    ['Compound interest', 'A = P(1 + r/n)^(nt)', '$1,000 at 10% yearly for 2 yr → $1,210'],
+    ['Mixtures', 'amount of substance = concentration × volume; add the amounts', '2 L of 10% + 3 L of 20% = 0.8 L in 5 L = 16%'],
+    ['Weighted average', '(w₁x₁ + w₂x₂) / (w₁ + w₂)', '10 scores avg 80, 30 avg 60 → 65'],
+  ] },
+  { title: 'Statistics, counting, and probability', cols: ['Topic', 'Formula', 'Notes'], rows: [
+    ['Mean', 'sum ÷ count;  sum = mean × count', 'Adding a value above the mean raises it'],
+    ['Median', 'Middle value in order; average of the two middle values if even count', 'Not affected by extreme values'],
+    ['Mode and range', 'Mode: most frequent value. Range: max − min.', ''],
+    ['Standard deviation', 'Typical distance from the mean; adding a constant to every value leaves it unchanged; multiplying by k multiplies it by |k|', 'Normal curve: about 68% within 1 SD, 95% within 2 SD'],
+    ['Quartiles and IQR', 'IQR = Q3 − Q1, the spread of the middle half', 'Box plots show min, Q1, median, Q3, max'],
+    ['Fundamental counting', 'm ways then n ways → m × n ways', '3 shirts × 4 pants = 12 outfits'],
+    ['Permutations', 'nPr = n! / (n − r)!  (order matters)', 'Gold, silver, bronze from 8: 336'],
+    ['Combinations', 'nCr = n! / (r!(n − r)!)  (order does not matter)', 'Choose 3 of 8: 56'],
+    ['Probability', 'P = favorable outcomes ÷ total equally likely outcomes', 'P(not A) = 1 − P(A)'],
+    ['Independent events', 'P(A and B) = P(A) × P(B)', 'Two heads: 1/4'],
+    ['Either event', 'P(A or B) = P(A) + P(B) − P(A and B)', 'Subtract the overlap once'],
+    ['At least one', '1 − P(none)', 'At least one 6 in 2 rolls: 1 − 25/36 = 11/36'],
+    ['Overlapping sets', 'Total = A + B − both + neither', '30 total, 18 A, 15 B, 5 neither → 8 both'],
+  ] },
+  { title: 'Geometry', cols: ['Shape', 'Formula', 'Notes'], rows: [
+    ['Angles', 'Straight line 180°; around a point 360°; vertical angles equal', 'Parallel lines cut by a transversal: alternate angles equal'],
+    ['Triangle', 'Angles sum to 180°; area = ½ × base × height', 'Each side < sum of the other two'],
+    ['Pythagorean theorem', 'a² + b² = c²', 'Triples: 3-4-5, 5-12-13, 8-15-17, 7-24-25'],
+    ['45-45-90 triangle', 'Sides x, x, x√2', 'Half of a square'],
+    ['30-60-90 triangle', 'Sides x, x√3, 2x', 'Half of an equilateral triangle'],
+    ['Equilateral triangle', 'Area = (√3/4)s²', 'Height = (√3/2)s'],
+    ['Polygon angles', 'Interior sum = (n − 2) × 180°', 'Hexagon: 720°, each angle 120° if regular'],
+    ['Rectangle and square', 'Area = lw; perimeter = 2(l + w); diagonal = √(l² + w²)', ''],
+    ['Parallelogram and trapezoid', 'Parallelogram area = bh; trapezoid area = ½(b₁ + b₂)h', 'h is perpendicular height'],
+    ['Circle', 'C = 2πr = πd;  A = πr²', 'Arc = (θ/360) × 2πr; sector = (θ/360) × πr²'],
+    ['Inscribed angle', 'Half the central angle on the same arc', 'An angle inscribed in a semicircle is 90°'],
+    ['Box', 'V = lwh;  surface area = 2(lw + lh + wh);  diagonal = √(l² + w² + h²)', 'Cube: V = s³, SA = 6s²'],
+    ['Cylinder', 'V = πr²h;  surface area = 2πr² + 2πrh', ''],
+    ['Similar figures', 'Lengths scale by k, areas by k², volumes by k³', 'Double the sides → 4× area, 8× volume'],
+  ] },
+  { title: 'Quantitative comparison strategy', note: 'Choices are always in this order: (A) Quantity A is greater, (B) Quantity B is greater, (C) the two are equal, (D) the relationship cannot be determined.', cols: ['Situation', 'What to do', 'Why'], rows: [
+    ['Only numbers, no variables', 'The answer cannot be D.', 'Fixed values always have a definite relationship.'],
+    ['Variables present', 'Plug in different kinds of numbers: positive, negative, 0, fractions, large values.', 'If two tests give different results, the answer is D.'],
+    ['Simplify both sides', 'Do the same operation to both quantities (add, subtract, multiply by a positive).', 'Never multiply or divide by something that could be negative or zero.'],
+    ['Figures', 'Assume figures are not drawn to scale unless stated; trust only the given facts.', 'Lines that look parallel may not be.'],
+    ['Avoid long calculations', 'Estimate or compare piece by piece.', 'You only need which is bigger, not the exact values.'],
+  ] },
+  { title: 'Test overview', note: 'The current GRE General Test (shorter format introduced in 2023) takes about 1 hour 58 minutes.', cols: ['Section', 'Questions and time', 'Notes'], rows: [
+    ['Analytical Writing', '1 "Analyze an Issue" essay, 30 min', 'Always first. Scored 0–6 in half-point steps.'],
+    ['Verbal Reasoning', '2 sections: 12 questions in 18 min, then 15 in 23 min', 'Text completion, sentence equivalence, reading comprehension. Scored 130–170.'],
+    ['Quantitative Reasoning', '2 sections: 12 questions in 21 min, then 15 in 26 min', 'Comparison, multiple choice, numeric entry, data interpretation. On-screen calculator. Scored 130–170.'],
+    ['Section adaptivity', 'Your second Verbal and Quant sections get harder or easier based on the first.', 'Do well early: the first section sets your ceiling.'],
+    ['No penalty for guessing', 'Answer every question.', 'Mark hard questions and return; you can move within a section.'],
+  ] },
+];
+/* question-type tips, shown on the GRE page */
+const GRE_TIPS = [
+  ['Text completion', 'Cover the choices, find the clue words in the sentence, and predict your own word first. Watch for pivot words like although, yet, and despite, which signal a contrast. With two or three blanks, start with the blank you can solve most easily. You must get every blank right to earn the point.'],
+  ['Sentence equivalence', 'Pick two answers that both fit the sentence and give it the same meaning. Look for a pair of near-synonyms, but beware of pairs that are synonyms of each other yet do not fit the sentence.'],
+  ['Reading comprehension', 'Read for the author\'s main point and attitude, not every detail. Correct answers are supported by the text; wrong answers are often too extreme, out of scope, or true but not responsive to the question.'],
+  ['Quantitative comparison', 'Simplify both quantities the same way, then test numbers. If different tests give different results, choose D. If both quantities are fixed numbers, D is impossible.'],
+  ['Numeric entry and multiple choice', 'Write the setup before computing, check units, and reread what the question asks for (the total, the difference, the percent?). For "select all that apply," judge each choice on its own.'],
+  ['Data interpretation', 'Read titles, axes, and units first. Many questions only need an estimate; check whether the graph shows counts or percents before you calculate.'],
+];
 
 /* ── tests/_core-essays.js ── */
 (() => {
@@ -29867,6 +30269,340 @@ registerTest({
 });
 })();
 
+
+/* ── tests/gre-general.js ── */
+/* GRE General Test practice: Verbal and Quantitative Reasoning. Original questions written to the published test format.
+   Kept separate from the Praxis tests: area 'gre' is not in AREAS, so it never appears in Praxis lists. */
+(() => {
+const CATS = [
+  { k: 'V', name: 'Verbal Reasoning', short: 'Verbal', n: 27 },
+  { k: 'Q', name: 'Quantitative Reasoning', short: 'Quant', n: 27 },
+];
+const [BANK, S, H] = makeBank();
+const [GENS, G, GH] = makeGens(CATS);
+/* ═════ Verbal Reasoning ═════ */
+/* Text completion: one blank, five choices */
+S('V', `Although the documentary was praised for its stunning photography, critics found its narration _____, repeating the same few points for nearly two hours.`, [
+  `tedious`, `incisive`, `succinct`, `whimsical`, `evocative`],
+  `"Although" sets up a contrast with the praise, and "repeating the same few points" tells you the narration was boring: tedious. Succinct and incisive are positive; whimsical and evocative don't fit "repeating."`);
+S('V', `The senator's reputation for _____ was well earned: in thirty years she had never once changed her vote to please a donor.`, [
+  `integrity`, `pragmatism`, `ambivalence`, `diffidence`, `largess`],
+  `Refusing to change votes for donors shows moral steadiness, or integrity. Pragmatism would suggest the opposite (adjusting to circumstances), and ambivalence means mixed feelings.`);
+S('V', `Far from being _____, the new manager's policies were drawn almost entirely from her predecessor's notes.`, [
+  `original`, `derivative`, `unpopular`, `cautious`, `transparent`],
+  `"Far from being X" means the opposite of X is true. Policies drawn from someone else's notes are not original. Derivative is the opposite of what the blank needs.`);
+S('V', `Researchers had expected the drug to work only in young patients, so they were surprised by its _____ effect in adults over eighty.`, [
+  `salutary`, `negligible`, `deleterious`, `ephemeral`, `predictable`],
+  `"Surprised" points to an unexpectedly good result in older patients: salutary (beneficial). Negligible or predictable results would not surprise; deleterious means harmful.`);
+S('V', `Her _____ manner at press conferences, in which she answered most questions with a single word, frustrated reporters hoping for a quotable sound bite.`, [
+  `laconic`, `effusive`, `garrulous`, `ingratiating`, `sardonic`],
+  `Single-word answers mark a laconic (very brief) speaker. Effusive and garrulous are the opposite; sardonic means mocking, which the sentence does not suggest.`);
+S('V', `The professor was known for her _____: she could not resist correcting a student's grammar even in the middle of a heated discussion about ethics.`, [
+  `pedantry`, `magnanimity`, `reticence`, `levity`, `diffidence`],
+  `Correcting minor grammar at an inappropriate moment shows excessive attention to rules: pedantry. Reticence and diffidence suggest restraint, the opposite of interrupting.`);
+S('V', `Because the archive's records were so _____, historians could reconstruct the merchant's daily schedule almost hour by hour.`, [
+  `meticulous`, `fragmentary`, `apocryphal`, `cursory`, `ambiguous`],
+  `Reconstructing a schedule hour by hour requires detailed, careful records: meticulous. Fragmentary, cursory, and ambiguous records would make this impossible.`);
+S('V', `The committee's report was so _____ that even its supporters admitted they could not tell what it actually recommended.`, [
+  `opaque`, `lucid`, `concise`, `partisan`, `polemical`],
+  `Not being able to tell what something recommends means it is unclear: opaque. Lucid and concise are positive opposites; partisan and polemical describe bias, not unclarity.`);
+S('V', `Though often dismissed as merely _____, the novelist's early stories reveal a careful craftsman experimenting with structure.`, [
+  `slapdash`, `meticulous`, `profound`, `controversial`, `autobiographical`],
+  `"Though often dismissed as" sets up a contrast with "careful craftsman." The dismissal must be the opposite of careful: slapdash (careless).`);
+S('V', `The region's once-_____ fishing industry has dwindled to a handful of boats, most of them owned by a single family.`, [
+  `thriving`, `nascent`, `moribund`, `clandestine`, `regulated`],
+  `"Once-" plus "has dwindled" signals a contrast between past and present: the industry used to be thriving. Moribund (dying) describes the present, not the past.`);
+H('V', `Critics who call the composer's late works _____ overlook how much they borrow from the folk tunes of her childhood; the apparent novelty is really a kind of homecoming.`, [
+  `iconoclastic`, `nostalgic`, `derivative`, `sentimental`, `conventional`],
+  `The critics see the works as breaking with tradition (iconoclastic); the author answers that they actually return to old folk tunes. "Apparent novelty" confirms the critics' view is of something radically new.`);
+H('V', `So _____ was the diplomat's statement that both governments claimed it supported their position.`, [
+  `equivocal`, `vehement`, `categorical`, `perfunctory`, `candid`],
+  `If both sides can claim a statement supports them, it must be open to more than one reading: equivocal. A categorical or candid statement would clearly favor one side.`);
+H('V', `The biography's tone is curiously _____: the author records the subject's triumphs and scandals in the same flat, unhurried prose.`, [
+  `dispassionate`, `hagiographic`, `censorious`, `exuberant`, `elegiac`],
+  `Describing triumphs and scandals in the same flat way shows neither praise nor blame: dispassionate. Hagiographic (worshipful) and censorious (critical) each take a side.`);
+H('V', `Even her admirers concede that her prose can be _____, though they argue that its density rewards the patient reader.`, [
+  `abstruse`, `limpid`, `banal`, `jejune`, `laconic`],
+  `"Density rewards the patient reader" implies the prose is hard to understand: abstruse. Limpid means clear, and banal or jejune mean dull or simplistic, which density would not suggest.`);
+H('V', `The mayor's _____ response to the flood, announcing a study rather than sending aid, struck residents as an insult.`, [
+  `dilatory`, `precipitate`, `munificent`, `draconian`, `zealous`],
+  `Announcing a study instead of acting is slow and delaying: dilatory. Precipitate means too hasty; munificent and zealous would describe a generous or energetic response.`);
+H('V', `Not one to _____ his opponents, the chess champion always praised their best moves in his post-game interviews.`, [
+  `disparage`, `extol`, `emulate`, `placate`, `underestimate`],
+  `"Not one to X" contrasts with "always praised": X must mean to belittle, so disparage. Extol means to praise, the opposite of what the blank needs.`);
+H('V', `What looked like _____ on the part of the young pitcher, who threw his fastest pitch to the league's best hitter, was in fact a calculated risk based on hours of film study.`, [
+  `recklessness`, `deference`, `prudence`, `timidity`, `apathy`],
+  `"What looked like X ... was in fact a calculated risk" means X is the opposite of calculation: recklessness. Prudence is what it actually was.`);
+
+/* Text completion: two and three blanks, choices given as combinations */
+S('V', `The new policy was intended to (i) _____ the shortage of nurses, but by making overtime mandatory it actually (ii) _____ the problem, as exhausted staff began to quit.`, [
+  `alleviate … exacerbated`, `alleviate … resolved`, `aggravate … exacerbated`, `ignore … mitigated`, `document … obscured`],
+  `"Intended to … but … actually" sets up a contrast between the goal and the result. The goal was to ease (alleviate) the shortage; the result was to worsen it (exacerbated), since staff quit.`);
+S('V', `Though the author is (i) _____ in person, rarely speaking at readings, her novels are (ii) _____, packed with long, digressive conversations.`, [
+  `reticent … garrulous`, `loquacious … garrulous`, `reticent … terse`, `affable … succinct`, `brusque … laconic`],
+  `"Though" contrasts the author with her novels. "Rarely speaking" means she is reticent; "long, digressive conversations" means the novels are garrulous.`);
+S('V', `Early reviews of the restaurant were (i) _____, but after the chef was replaced, critics who had once (ii) _____ it began recommending it to friends.`, [
+  `scathing … derided`, `glowing … derided`, `scathing … lauded`, `mixed … ignored`, `glowing … championed`],
+  `The critics changed from negative to recommending, so early reviews were negative (scathing) and the critics had once mocked (derided) the restaurant.`);
+S('V', `Because the evidence was largely (i) _____, the jury was reluctant to convict; no witness had actually seen the defendant at the scene, and the fingerprints were (ii) _____.`, [
+  `circumstantial … inconclusive`, `irrefutable … inconclusive`, `circumstantial … unmistakable`, `anecdotal … damning`, `forensic … conclusive`],
+  `Reluctance to convict, with no eyewitness, means the evidence was indirect (circumstantial) and the fingerprints did not settle the question (inconclusive).`);
+H('V', `The scientist's reputation for (i) _____ made her endorsement especially (ii) _____: she had spent decades refusing to comment on results she had not personally checked.`, [
+  `caution … persuasive`, `recklessness … persuasive`, `caution … suspect`, `flamboyance … valuable`, `credulity … meaningless`],
+  `Refusing to comment on unchecked results shows caution. Because she is so careful, her endorsement carries weight: persuasive. "Suspect" would follow from a reputation for carelessness.`);
+H('V', `Far from (i) _____ the controversy, the museum's carefully worded apology only (ii) _____ it, since many visitors read the statement as a refusal to admit any real error.`, [
+  `defusing … inflamed`, `inflaming … defused`, `defusing … resolved`, `documenting … obscured`, `ignoring … settled`],
+  `"Far from X, only Y" means the apology did the opposite of what was intended. It did not calm (defuse) the controversy; it made it worse (inflamed), as visitors saw it as evasive.`);
+H('V', `In contrast to her (i) _____ predecessor, who announced every minor initiative with a press release, the new director preferred to work (ii) _____, letting results speak for themselves.`, [
+  `publicity-seeking … quietly`, `self-effacing … quietly`, `publicity-seeking … ostentatiously`, `reclusive … openly`, `diffident … flamboyantly`],
+  `"In contrast to" sets the predecessor against the director. Announcing everything means publicity-seeking; the director's preference for letting results speak means working quietly.`);
+H('V', `The theory was initially (i) _____ by most physicists, who considered its predictions too strange to take seriously; only after a series of (ii) _____ experiments did it gain the (iii) _____ it enjoys today.`, [
+  `dismissed … confirmatory … acceptance`, `embraced … confirmatory … acceptance`, `dismissed … ambiguous … notoriety`, `dismissed … flawed … acceptance`, `embraced … ambiguous … skepticism`],
+  `"Too strange to take seriously" means the theory was dismissed. "Only after … did it gain" means experiments supported it (confirmatory), leading to its current acceptance.`);
+H('V', `The essayist's style is deceptively (i) _____: her sentences are short and her vocabulary plain, yet each paragraph conceals arguments of real (ii) _____, which readers often (iii) _____ on a first reading.`, [
+  `simple … subtlety … overlook`, `ornate … subtlety … overlook`, `simple … crudeness … appreciate`, `simple … subtlety … exaggerate`, `ornate … obviousness … notice`],
+  `"Short sentences and plain vocabulary" make the style look simple; "yet … conceals" signals hidden depth (subtlety), which readers miss (overlook) at first because the surface looks simple.`);
+
+/* Sentence equivalence: select TWO */
+S('V', `The new intern was so _____ that she volunteered for every task, even ones well outside her job description. Select TWO answers.`, [
+  `zealous`, `eager`, `indolent`, `diffident`, `circumspect`, `sardonic`],
+  `Volunteering for every task shows enthusiasm: zealous and eager both fit and produce the same meaning. Indolent (lazy) and diffident (shy) are opposites.`, 2);
+S('V', `Although the city's budget surplus seemed _____, officials warned that a single bad year could erase it. Select TWO answers.`, [
+  `substantial`, `considerable`, `precarious`, `negligible`, `illusory`, `meager`],
+  `"Although … a single bad year could erase it" contrasts with how the surplus looked, so it seemed large: substantial and considerable. Negligible and meager fit together but not the contrast.`, 2);
+S('V', `The professor's lectures were notoriously _____, often running thirty minutes past the scheduled end. Select TWO answers.`, [
+  `prolix`, `verbose`, `laconic`, `incisive`, `pithy`, `erudite`],
+  `Running long suggests too many words: prolix and verbose. Laconic and pithy form a pair of synonyms, but they mean the opposite.`, 2);
+S('V', `Visitors were struck by the _____ of the monastery: bare walls, plain wooden benches, and a single candle on the altar. Select TWO answers.`, [
+  `austerity`, `starkness`, `opulence`, `grandeur`, `serenity`, `antiquity`],
+  `Bare walls and plain benches describe severe simplicity: austerity and starkness. Opulence and grandeur are opposites; serenity might fit but has no matching partner with the same meaning.`, 2);
+S('V', `The witness's account was _____, changing in important details each time she told it. Select TWO answers.`, [
+  `inconsistent`, `contradictory`, `corroborated`, `meticulous`, `fabricated`, `succinct`],
+  `Changing details each time means the account did not hold together: inconsistent and contradictory. Fabricated goes further than the evidence supports and has no partner.`, 2);
+S('V', `Rather than _____ her critics, the author answered each objection patiently in a long appendix. Select TWO answers.`, [
+  `dismiss`, `disregard`, `address`, `engage`, `flatter`, `emulate`],
+  `"Rather than X, … answered each objection" means X is the opposite of answering: dismiss and disregard. Address and engage are synonyms, but they describe what she did instead.`, 2);
+S('V', `Initially _____ about the merger, the board grew enthusiastic once it saw the projected savings. Select TWO answers.`, [
+  `skeptical`, `dubious`, `sanguine`, `ardent`, `informed`, `indifferent`],
+  `"Initially … grew enthusiastic" signals a change from doubt: skeptical and dubious. Sanguine and ardent are positive and would not need to change.`, 2);
+S('V', `The landscape painter's palette was famously _____, limited to a few shades of gray, brown, and dull green. Select TWO answers.`, [
+  `subdued`, `muted`, `vibrant`, `garish`, `eclectic`, `luminous`],
+  `A few dull shades describe a restrained palette: subdued and muted. Vibrant and garish are bright; eclectic means varied.`, 2);
+H('V', `The candidate's speeches were full of _____ promises that sounded impressive but committed him to nothing specific. Select TWO answers.`, [
+  `vague`, `nebulous`, `binding`, `explicit`, `extravagant`, `sincere`],
+  `"Committed him to nothing specific" means the promises were unclear: vague and nebulous. Extravagant might fit "sounded impressive" but lacks a synonym partner and misses the point about specificity.`, 2);
+H('V', `For all his apparent _____, the novelist was a shrewd businessman who negotiated every contract himself. Select TWO answers.`, [
+  `naivety`, `ingenuousness`, `cunning`, `avarice`, `diligence`, `eccentricity`],
+  `"For all his apparent X, [he] was shrewd" requires X to contrast with shrewdness: naivety and ingenuousness. Cunning would agree with "shrewd," not contrast.`, 2);
+H('V', `The reviewer's praise was _____: she admired the novel's ambition but regretted nearly every choice the author made in carrying it out. Select TWO answers.`, [
+  `qualified`, `tempered`, `effusive`, `unreserved`, `insincere`, `belated`],
+  `Admiring the ambition but regretting the execution means the praise was limited: qualified and tempered (both GRE secondary meanings). Effusive and unreserved form a pair, but they mean the opposite.`, 2);
+H('V', `Long regarded as _____, the theory has recently attracted renewed attention from researchers impressed by its predictive power. Select TWO answers.`, [
+  `discredited`, `debunked`, `orthodox`, `canonical`, `promising`, `controversial`],
+  `"Long regarded as X, … has recently attracted renewed attention" suggests it had been rejected: discredited and debunked. Orthodox and canonical are a synonym pair, but an accepted theory would not need renewed attention.`, 2);
+H('V', `Despite the company's _____ public statements, internal emails showed executives had known about the defect for years. Select TWO answers.`, [
+  `reassuring`, `soothing`, `candid`, `forthright`, `alarming`, `belated`],
+  `"Despite … had known for years" implies the statements hid the problem by calming the public: reassuring and soothing. Candid and forthright are a pair, but honest statements would not contrast with the emails.`, 2);
+H('V', `Her taste in books was remarkably _____, ranging from medieval poetry to software manuals. Select TWO answers.`, [
+  `catholic`, `eclectic`, `parochial`, `discriminating`, `provincial`, `refined`],
+  `Ranging widely means broad: catholic (lowercase, a GRE secondary meaning) and eclectic. Parochial and provincial are a pair meaning narrow, the opposite.`, 2);
+H('V', `The team's early success proved _____; by midseason it had lost eight games in a row. Select TWO answers.`, [
+  `ephemeral`, `fleeting`, `enduring`, `illusory`, `deserved`, `celebrated`],
+  `Success that disappears by midseason was short-lived: ephemeral and fleeting. Illusory suggests the success was never real, which changes the meaning.`, 2);
+
+/* Reading comprehension */
+PSG('gre-bees', { title: 'Who pollinates our crops?', kind: 'nonfiction', src: 'Original passage written for practice',
+  text: `For decades, ecologists assumed that honeybees were the most important pollinators of the world's crops. The assumption was understandable: honeybees are easy to count, easy to manage, and commercially valuable in their own right. Yet a growing body of field studies suggests that wild insects, including solitary bees, hoverflies, and beetles, contribute far more to crop yields than their modest public profile would suggest.
+
+In one analysis of more than forty crops on six continents, fruit set rose with visits from wild insects regardless of how many honeybees were present, whereas extra honeybee visits raised yields in only a minority of crops. The researchers did not conclude that honeybees are unimportant. Rather, they argued that the two groups are complementary: honeybees supplement wild pollinators but cannot replace them. This finding complicates a common agricultural strategy of compensating for declining wild populations by trucking in more hives.` });
+S('V', `The primary purpose of the passage is to`, [
+  `challenge a widely held assumption about which insects matter most for crop pollination`, `argue that honeybees are unimportant for agriculture`, `explain why honeybees are easier to study than wild insects`, `describe the methods used to count pollinators in the field`, `propose a new strategy for managing commercial beehives`],
+  `The passage presents the old assumption (honeybees are most important) and then evidence that wild insects matter more than expected. It explicitly says the researchers did not conclude honeybees are unimportant.`, 1, { psg: 'gre-bees' });
+S('V', `According to the passage, the assumption described in the first sentence was "understandable" because honeybees`, [
+  `are easier to observe and manage than many other pollinators`, `visit more kinds of flowers than wild insects do`, `raise yields in most of the crops studied`, `are declining more slowly than wild pollinators`, `were the only pollinators studied before recent decades`],
+  `The second sentence gives the reasons: honeybees are easy to count, easy to manage, and commercially valuable. The other choices are not stated, and the study found extra honeybee visits helped only a minority of crops.`, 1, { psg: 'gre-bees' });
+H('V', `The passage suggests that the strategy of "trucking in more hives" is problematic because`, [
+  `honeybees cannot fully do the work of wild pollinators`, `transporting hives harms the honeybees`, `honeybees compete with wild insects for food`, `farmers cannot afford to rent enough hives`, `wild insects avoid fields that contain honeybees`],
+  `The researchers found the groups are complementary: honeybees "supplement wild pollinators but cannot replace them." Adding hives therefore cannot make up for losing wild insects. The other choices may be true in real life but are not suggested by the passage.`, 1, { psg: 'gre-bees' });
+H('V', `Which of the following can be inferred from the study described in the second paragraph? Select ALL that apply.`, [
+  `In some crops, additional honeybee visits increased yields.`, `Wild insect visits were associated with higher fruit set even where honeybees were plentiful.`, `Honeybees are less efficient pollinators than hoverflies in every crop.`],
+  `"Only in a minority of crops" implies that in some crops honeybee visits did raise yields (first choice). Fruit set rose with wild visits "regardless of how many honeybees were present" (second choice). The passage does not compare honeybees with hoverflies crop by crop.`, 2, { psg: 'gre-bees' });
+
+PSG('gre-letters', { title: 'Private letters, public readers', kind: 'nonfiction', src: 'Original passage written for practice',
+  text: `Historians of the eighteenth century have long treated private letters as windows into their writers' inner lives. A letter, the reasoning went, was written for a single trusted reader and therefore revealed what its author truly thought. Recent scholarship has made this view harder to sustain. Letters of the period were routinely read aloud to families, copied into commonplace books, and passed among friends; some writers composed them with eventual publication in mind. A letter, in other words, was often a performance staged for an audience larger than its addressee.
+
+None of this makes letters useless as evidence. It does mean that a historian who quotes a letter as proof of private sentiment must first ask for whom the writer was really writing.` });
+S('V', `The author's attitude toward the traditional view of letters is best described as`, [
+  `measured skepticism`, `enthusiastic endorsement`, `bitter contempt`, `complete indifference`, `reluctant agreement`],
+  `The author says recent scholarship makes the old view "harder to sustain" but also that letters are not "useless as evidence." That balanced doubt is measured skepticism, not contempt or endorsement.`, 1, { psg: 'gre-letters' });
+S('V', `In the context of the passage, "performance" most nearly suggests that letters were`, [
+  `shaped with an audience beyond the recipient in mind`, `written by professional actors`, `deliberately deceptive in every case`, `read aloud only at formal events`, `judged mainly on their literary quality`],
+  `The sentence explains that letters were read aloud, copied, and sometimes written for publication, so writers shaped them for a wider audience. The passage does not claim they were always deceptive.`, 1, { psg: 'gre-letters' });
+H('V', `The final sentence of the passage serves primarily to`, [
+  `state a practical consequence of the argument for historians`, `reject the evidence presented in the first paragraph`, `introduce a new example of a public letter`, `summarize the traditional view the author opposes`, `concede that the traditional view was correct after all`],
+  `After arguing that letters were often public performances, the author concludes with what historians should do as a result: ask who the real audience was. It applies the argument rather than reversing or merely summarizing it.`, 1, { psg: 'gre-letters' });
+
+PSG('gre-city', { title: 'More lanes, more cars', kind: 'nonfiction', src: 'Original passage written for practice',
+  text: `When a city adds lanes to a congested highway, traffic typically improves for a year or two and then returns to its former level. Transportation researchers call this pattern "induced demand": faster travel encourages people to make trips they previously avoided, to live farther from work, or to drive rather than take transit, until the new capacity fills. Critics of highway expansion cite induced demand as proof that building roads cannot cure congestion. Defenders respond that the additional trips are not a failure but a benefit; people are, after all, getting where they want to go. Both sides, notably, accept the same empirical finding while disagreeing about how to value it.` });
+S('V', `The passage is mainly concerned with`, [
+  `describing a phenomenon and two interpretations of its significance`, `proving that highway expansion always fails`, `explaining how transit systems reduce congestion`, `criticizing researchers who study induced demand`, `recommending that cities stop building highways`],
+  `The passage explains induced demand, then presents critics' and defenders' views and notes they agree on the facts. It takes no side and makes no recommendation.`, 1, { psg: 'gre-city' });
+H('V', `It can be inferred that the "defenders" mentioned in the passage would most likely agree with which statement?`, [
+  `A highway that fills with new trips after expansion may still have been worth building.`, `Induced demand is a myth invented by opponents of highways.`, `Congestion always disappears permanently after a highway is widened.`, `Transit is always preferable to driving.`, `Researchers have measured induced demand incorrectly.`],
+  `Defenders accept induced demand ("both sides … accept the same empirical finding") but see the new trips as a benefit. So they would say expansion can be worthwhile even if congestion returns.`, 1, { psg: 'gre-city' });
+H('V', `The word "notably" in the last sentence is used to emphasize`, [
+  `a surprising point of agreement between two opposing groups`, `a flaw in the defenders' reasoning`, `that the research is widely cited`, `a disagreement about the facts`, `that the author is about to change the subject`],
+  `"Notably" highlights something worth noticing: that critics and defenders, though opposed, accept the same finding. Their disagreement is about values, not facts.`, 1, { psg: 'gre-city' });
+
+/* Short arguments (critical reasoning) */
+S('V', `A survey found that people who drink coffee daily report fewer headaches than people who never drink coffee. The survey's author concluded that coffee prevents headaches.<br><br>Which of the following, if true, most seriously weakens the conclusion?`, [
+  `Many people who get frequent headaches avoid coffee because it makes their headaches worse.`, `Coffee contains caffeine, which is also found in some headache medicines.`, `The survey included people from many different countries.`, `Some daily coffee drinkers also drink tea.`, `People who drink coffee daily tend to sleep slightly less than others.`],
+  `If headache-prone people avoid coffee, the correlation may run the other way: headaches cause less coffee drinking, not the reverse. The caffeine choice would, if anything, support the conclusion.`);
+H('V', `After a town installed brighter streetlights, reported nighttime burglaries fell by 30 percent over the next year. The town council concluded that the lights deterred burglars.<br><br>Which of the following, if true, would most strengthen the council's conclusion?`, [
+  `In nearby towns without new lights, burglary rates stayed the same during that year.`, `The new lights also reduced the town's electricity costs.`, `Burglaries in the town had been rising for several years before the lights were installed.`, `Residents reported feeling safer walking at night.`, `The town hired two new police officers the same year.`],
+  `Showing that comparable towns without the change saw no drop rules out region-wide causes. A prior rising trend shows the drop was real but not its cause; new officers would offer an alternative explanation, weakening the claim.`);
+H('V', `Magazine editor: "Our subscribers who read the print edition renew at a higher rate than those who read only online. So if we persuade online readers to switch to print, our renewal rate will rise."<br><br>The editor's reasoning is most vulnerable to which criticism?`, [
+  `It assumes that print causes loyalty rather than that already-loyal readers choose print.`, `It ignores the cost of printing and mailing magazines.`, `It relies on a sample that is too small.`, `It confuses renewal rates with subscription prices.`, `It assumes all online readers have home addresses.`],
+  `Readers who choose print may already be more committed; switching less committed readers to print may not change their behavior. Cost is a business concern, but it is not a flaw in the reasoning about renewal rates.`);
+
+/* ═════ Quantitative Reasoning ═════ */
+const QCH = ['Quantity A is greater.', 'Quantity B is greater.', 'The two quantities are equal.', 'The relationship cannot be determined from the information given.'];
+const qcT = (a, b, given) => `${given ? `<p class="qc-given">${given}</p>` : ''}<table class="data qc"><tr><th>Quantity A</th><th>Quantity B</th></tr><tr><td>${a}</td><td>${b}</td></tr></table>`;
+/* quantitative comparison, static: answer letter A–D */
+const QC = (lv, a, b, given, ans, expl) => (lv === 2 ? H : S)('Q', qcT(a, b, given) + 'Compare Quantity A and Quantity B.', QCH, expl, 1, { ord: 1, ci: ['ABCD'.indexOf(ans)] });
+QC(1, '(−3)^(4)', '−3^(4)', '', 'A', `(−3)^(4) = 81, but −3^(4) means −(3^(4)) = −81. The exponent applies before the negative sign unless parentheses say otherwise.`);
+QC(1, 'x', 'x²', 'x is a number such that 0 < x < 1.', 'A', `For numbers between 0 and 1, squaring makes them smaller: if x = 1/2, x² = 1/4. A is always greater.`);
+QC(1, 'x²', 'x', 'x ≠ 0', 'D', `Test numbers: x = 2 gives 4 > 2 (A); x = 1/2 gives 1/4 < 1/2 (B). Different results mean the relationship cannot be determined.`);
+QC(1, 'The average of 4, 9, and 17', 'The median of 4, 9, and 17', '', 'A', `Average = 30/3 = 10; median = 9. A is greater.`);
+QC(1, '30% of 80', '80% of 30', '', 'C', `x% of y always equals y% of x: both are 24.`);
+QC(1, 'The number of positive divisors of 36', '8', '', 'A', `36 = 2² × 3², so it has (2 + 1)(2 + 1) = 9 divisors: 1, 2, 3, 4, 6, 9, 12, 18, 36. 9 > 8.`);
+QC(1, 'a + b', '10', 'a and b are positive integers, and ab = 24.', 'D', `ab = 24 allows (1, 24), sum 25; (4, 6), sum 10; (2, 12), sum 14. A can be greater than or equal to 10, so the relationship cannot be determined.`);
+QC(1, 'The area of a circle with radius 3', 'The area of a square with side 5', '', 'A', `Circle: 9π ≈ 28.3. Square: 25. A is greater.`);
+QC(1, '0.7 × 0.7 × 0.7', '0.7 + 0.7 − 0.7', '', 'B', `0.7³ = 0.343, which is less than 0.7. Multiplying numbers between 0 and 1 makes the product smaller.`);
+QC(1, 'The price after a 20% increase followed by a 20% decrease', 'The original price', 'An item costs $50.', 'B', `$50 × 1.2 = $60; $60 × 0.8 = $48, which is less than $50. Successive percent changes don't cancel.`);
+QC(2, 'x', 'y', 'x + y = 10 and x − y = 4', 'A', `Adding the equations: 2x = 14, x = 7, so y = 3. A is greater. Two equations in two unknowns usually pin down the values.`);
+QC(2, 'x', 'y', 'x > y²', 'D', `Try y = 2: then x > 4, so x > y (A greater). Try y = 0.9: then x > 0.81, and x = 0.85 is allowed, which is less than y (B greater). Since both outcomes are possible, the answer is D. Numbers between 0 and 1 are the usual way to break a pattern.`);
+QC(2, 'The number of ways to choose 3 people from 7', 'The number of ways to choose 4 people from 7', '', 'C', `C(7, 3) = C(7, 4) = 35. Choosing 3 to include is the same as choosing 4 to leave out.`);
+QC(2, 'The probability of getting at least one head in 3 fair coin tosses', '7/8', '', 'C', `P(no heads) = (1/2)³ = 1/8, so P(at least one) = 1 − 1/8 = 7/8.`);
+QC(2, 'The remainder when 3^(25) is divided by 10', 'The remainder when 7^(25) is divided by 10', '', 'B', `Units digits of powers of 3 cycle 3, 9, 7, 1; 25 = 4 × 6 + 1 gives 3. Powers of 7 cycle 7, 9, 3, 1, giving 7. 3 < 7.`);
+QC(2, 'The area of a triangle with sides 5, 5, and 6', 'The area of a triangle with sides 5, 5, and 8', '', 'C', `Split each isosceles triangle in half. Sides 5, 5, 6: height √(25 − 9) = 4, area ½ × 6 × 4 = 12. Sides 5, 5, 8: height √(25 − 16) = 3, area ½ × 8 × 3 = 12. Equal.`);
+QC(2, 'The standard deviation of 2, 4, 6, 8, 10', 'The standard deviation of 102, 104, 106, 108, 110', '', 'C', `Adding 100 to every value shifts the data without changing its spread, so the standard deviations are equal.`);
+QC(2, '(x + 1)²', 'x² + 1', 'x < 0', 'B', `(x + 1)² = x² + 2x + 1. Compared with x² + 1, the difference is 2x, which is negative when x < 0, so B is greater.`);
+QC(2, '√(a² + b²)', 'a + b', 'a > 0 and b > 0', 'B', `Square both (both are positive): a² + b² vs a² + 2ab + b². Since 2ab > 0, B is greater. Geometrically, the hypotenuse is shorter than the two legs together.`);
+QC(2, 'n', '1/n', 'n is an integer and n ≠ 0', 'D', `n = 2: 2 > 1/2 (A). n = −2: −2 < −1/2 (B). n = 1: equal. The relationship cannot be determined.`);
+
+/* multiple choice and select-all */
+S('Q', `If 3x − 7 = 2x + 5, what is the value of x?`, [`12`, `−2`, `2`, `−12`, `5`],
+  `Subtract 2x from both sides: x − 7 = 5, so x = 12.`);
+S('Q', `A shirt's price was reduced from $40 to $30. By what percent was the price reduced?`, [`25%`, `33⅓%`, `10%`, `75%`, `30%`],
+  `Percent change uses the original price: (40 − 30)/40 = 10/40 = 25%. Dividing by the new price gives 33⅓%, a common error.`);
+S('Q', `The average of five numbers is 18. If one number is removed, the average of the remaining four is 16. What number was removed?`, [`26`, `2`, `18`, `17`, `34`],
+  `Sum of five = 5 × 18 = 90; sum of four = 4 × 16 = 64. Removed number = 90 − 64 = 26.`);
+S('Q', `Working alone, Pipe A fills a tank in 6 hours and Pipe B fills it in 3 hours. How long do they take together?`, [`2 hours`, `4.5 hours`, `1.5 hours`, `9 hours`, `3 hours`],
+  `Rates add: 1/6 + 1/3 = 1/6 + 2/6 = 1/2 tank per hour, so 2 hours. Averaging the times (4.5) is a trap.`);
+S('Q', `Which of the following are prime? Select ALL that apply.`, [`2`, `31`, `51`, `1`, `57`],
+  `2 and 31 are prime. 51 = 3 × 17 and 57 = 3 × 19; 1 has only one divisor, so it is not prime.`, 2);
+S('Q', `If x and y are integers, x is even, and y is odd, which must be odd? Select ALL that apply.`, [`x + y`, `y²`, `xy`, `x² + 2y`],
+  `even + odd = odd; odd × odd = odd. xy is even (any number times an even number), and x² + 2y is even + even = even.`, 2);
+H('Q', `A bag holds 4 red and 6 blue marbles. Two are drawn without replacement. What is the probability that both are red?`, [`2/15`, `4/25`, `1/5`, `2/5`, `1/6`],
+  `P = (4/10) × (3/9) = 12/90 = 2/15. Without replacement, the second draw has 3 red out of 9. 4/25 assumes replacement.`);
+H('Q', `How many different arrangements of all five letters of the word LEVEL are possible?`, [`30`, `60`, `120`, `24`, `20`],
+  `There are 5! = 120 orders of five letters, but L and E each appear twice, so divide by 2! for each repeated pair: 120 ÷ (2 × 2) = 30. Dividing by only one 2! gives 60.`);
+H('Q', `A train travels 120 miles at 60 mph and returns the same distance at 40 mph. What is its average speed for the round trip?`, [`48 mph`, `50 mph`, `45 mph`, `52 mph`, `100 mph`],
+  `Total distance 240 mi; time = 2 h + 3 h = 5 h; average = 240/5 = 48 mph. Averaging the speeds (50) ignores that more time is spent at the slower speed.`);
+H('Q', `If n is a positive integer, which of the following must be divisible by 6? Select ALL that apply.`, [`n(n + 1)(n + 2)`, `n³ − n`, `n² + n`, `2n + 6`],
+  `n(n + 1)(n + 2) is three consecutive integers, so it includes a multiple of 2 and of 3. n³ − n = (n − 1)n(n + 1), also three consecutive integers. n² + n = n(n + 1) is always even but not always divisible by 3 (n = 1 gives 2), and 2n + 6 = 2(n + 3) fails for n = 1.`, 2);
+H('Q', `The ratio of boys to girls in a club is 3 : 5. After 6 more boys join, the ratio is 1 : 1. How many girls are in the club?`, [`15`, `9`, `24`, `30`, `10`],
+  `Let boys = 3k and girls = 5k. Then 3k + 6 = 5k, so k = 3: girls = 15 (boys 9, then 15).`);
+H('Q', `A rectangle's length is increased by 20% and its width is decreased by 20%. What happens to its area?`, [`It decreases by 4%.`, `It stays the same.`, `It increases by 4%.`, `It decreases by 20%.`, `It decreases by 40%.`],
+  `New area = 1.2 × 0.8 = 0.96 of the original: a 4% decrease. Percent changes multiply; they don't cancel.`);
+
+/* data interpretation with figures */
+{ const fig = FIG.bars({ cats: ['2019', '2020', '2021', '2022', '2023'], vals: [40, 25, 50, 60, 75], y: [0, 80], yt: [0, 20, 40, 60, 80], top: true, yl: 'Revenue ($ millions)', alt: 'Company revenue by year: 2019 40, 2020 25, 2021 50, 2022 60, 2023 75 million dollars' });
+S('Q', `${fig}Based on the graph, by approximately what percent did revenue increase from 2020 to 2021?`, [`100%`, `50%`, `25%`, `200%`, `125%`],
+  `From 25 to 50 is an increase of 25 on a base of 25: 25/25 = 100%. Doubling is a 100% increase, not 200%.`);
+H('Q', `${fig}Based on the graph, which year had the greatest percent increase in revenue over the previous year?`, [`2021`, `2022`, `2023`, `2020`, `2019`],
+  `2021: 25 → 50, +100%. 2022: 50 → 60, +20%. 2023: 60 → 75, +25%. 2021 also has the largest dollar increase (+25), but always check percent questions against the base year's value.`); }
+{ const fig = MFIG.boxSvg([['Group A', [10, 20, 30, 45, 70]], ['Group B', [15, 25, 30, 35, 50]]], 0, 80, 10, 'Minutes');
+H('Q', `${fig}The box plots summarize the minutes that two groups spent on a task. Which of the following statements must be true? Select ALL that apply.`, [`The two groups have the same median.`, `Group A's interquartile range is greater than Group B's.`, `Group A's mean is greater than Group B's mean.`],
+  `Both medians are 30. IQR: A = 45 − 20 = 25, B = 35 − 25 = 10. Box plots don't show the mean, so the third statement need not be true even though A has a long upper whisker.`, 2); }
+
+/* generators */
+const rq = (a, b) => R.ri(a, b);
+const fmt = v => neg(String(+(+v).toFixed(4)));
+G('Q', 'gre-pct', () => {
+  const o = rq(4, 20) * 10, p = R.pick([10, 15, 20, 25, 40, 50]), up = Math.random() < 0.5, nw = o * (1 + (up ? p : -p) / 100);
+  return num(`The price of a book ${up ? 'rose' : 'fell'} from $${o} to $${fmt(nw)}. By what percent did the price ${up ? 'increase' : 'decrease'}?`, p, [Math.abs(nw - o) / nw * 100, Math.abs(nw - o), p / 2, 100 - p], v => fmt(+v.toFixed(1)) + '%',
+    `Percent change = change ÷ original = ${fmt(Math.abs(nw - o))} ÷ ${o} = ${p}%. Dividing by the new price instead gives a different, wrong percent.`);
+});
+G('Q', 'gre-succ', () => {
+  const a = R.pick([10, 20, 25, 30, 40, 50]), b = R.pick([10, 20, 25, 30, 40, 50]), net = ((1 + a / 100) * (1 - b / 100) - 1) * 100;
+  if (Math.abs(net - Math.round(net)) > 1e-9 || net === 0) return null;
+  return num(`A stock's value increased by ${a}% in one year and then decreased by ${b}% the next year. What was the net percent change over the two years?`, net, [a - b, -(a - b), net / 2, a + b], v => (v > 0 ? '+' : '') + fmt(v) + '%',
+    `Multiply the factors: ${(1 + a / 100).toFixed(2)} × ${(1 - b / 100).toFixed(2)} = ${(1 + net / 100).toFixed(2)}, a net change of ${(net > 0 ? '+' : '') + fmt(net)}%. Simply subtracting the percents (${a} − ${b}) ignores that the second change applies to a different base.`);
+});
+G('Q', 'gre-avg', () => {
+  const n = rq(4, 7), m = rq(12, 30), x = rq(m + 3, m + 25), m2 = (n * m + x) / (n + 1); if (!Number.isInteger(m2)) return null;
+  return ne(`The average of ${n} numbers is ${m}. When one more number is added, the average becomes ${m2}. What number was added?`, x,
+    `Old sum = ${n} × ${m} = ${n * m}. New sum = ${n + 1} × ${m2} = ${(n + 1) * m2}. Added number = ${(n + 1) * m2} − ${n * m} = ${x}.`);
+});
+G('Q', 'gre-comb', () => {
+  const n = rq(5, 9), r = rq(2, 3), C = [1, n, n * (n - 1) / 2, n * (n - 1) * (n - 2) / 6][r], P = r === 2 ? n * (n - 1) : n * (n - 1) * (n - 2);
+  const ordered = Math.random() < 0.5;
+  return num(ordered ? `In how many ways can a president${r === 3 ? ', a vice president, and a secretary' : ' and a vice president'} be chosen from a club of ${n} members, if no one holds two offices?` : `In how many ways can a committee of ${r} be chosen from ${n} people?`, ordered ? P : C, [ordered ? C : P, Math.pow(n, r), n * r, C * 2], v => fmt(v),
+    ordered ? `Order matters (different offices): ${n} × ${n - 1}${r === 3 ? ` × ${n - 2}` : ''} = ${P}.` : `Order doesn't matter: C(${n}, ${r}) = ${P} ÷ ${r === 2 ? 2 : 6} = ${C}. Without dividing by ${r}! you'd be counting each committee ${r === 2 ? 2 : 6} times.`);
+});
+G('Q', 'gre-prob', () => {
+  const r = rq(2, 6), b = rq(3, 8), t = r + b; const pr = r / t * ((r - 1) / (t - 1));
+  return num(`A jar contains ${r} red and ${b} blue marbles. Two marbles are drawn at random without replacement. What is the probability that both are red?`, pr, [(r / t) ** 2, r / t, (r - 1) / (t - 1), r * (r - 1) / (t * t)], v => { const den = t * (t - 1), nm = Math.round(v * den); return Math.abs(nm / den - v) < 1e-9 ? fracStr(nm, den) : fracStr(Math.round(v * t * t), t * t); },
+    `P = (${r}/${t}) × (${r - 1}/${t - 1}) = ${r * (r - 1)}/${t * (t - 1)} = ${fracStr(r * (r - 1), t * (t - 1))}. After the first red is drawn, ${r - 1} red remain among ${t - 1}.`);
+});
+G('Q', 'gre-work', () => {
+  const a = R.pick([3, 4, 6, 12]), b = R.pick([4, 6, 12, 2, 3].filter(v => v !== a)); const tt = a * b / (a + b); if (!Number.isInteger(tt * 2)) return null;
+  return num(`Machine A can finish a job in ${a} hours, and Machine B can finish it in ${b} hours. Working together at these rates, how many hours will they take?`, tt, [(a + b) / 2, a + b, Math.min(a, b) / 2, Math.abs(a - b)], v => fmt(+v.toFixed(2)),
+    `Rates add: 1/${a} + 1/${b} = ${a + b}/${a * b} job per hour, so the time is ${a * b}/${a + b} = ${fmt(+tt.toFixed(2))} hours. Together they must be faster than the faster machine alone.`);
+});
+G('Q', 'gre-exp', () => {
+  const b = R.pick([2, 3]), p = rq(3, 6), q = rq(2, 5), r2 = rq(1, 4), e = p + q - r2;
+  return num(`If ${b}^(${p}) × ${b}^(${q}) ÷ ${b}^(${r2}) = ${b}^(x), what is x?`, e, [p * q - r2, p + q + r2, (p + q) / r2, p * q / r2], v => fmt(v),
+    `Add exponents when multiplying and subtract when dividing (same base): ${p} + ${q} − ${r2} = ${e}.`);
+});
+G('Q', 'gre-qcgen', () => {
+  const k = R.pick(['frac', 'pow', 'root']);
+  if (k === 'frac') { const a = rq(2, 9), b = rq(a + 1, 12), c = rq(2, 9), d = rq(c + 1, 12); if (a * d === b * c) return null;
+    return { stem: qcT(`${a}/${b}`, `${c}/${d}`, '') + 'Compare Quantity A and Quantity B.', choices: QCH, correct: [a * d > b * c ? 0 : 1], ordered: true, expl: `Cross-multiply: ${a} × ${d} = ${a * d} and ${b} × ${c} = ${b * c}. The larger product sits with the larger fraction, so ${a * d > b * c ? 'A' : 'B'} is greater.` }; }
+  if (k === 'pow') { const pairs = [[2, 10, 10, 3], [3, 5, 5, 3], [2, 6, 4, 3], [5, 2, 2, 5], [3, 4, 9, 2], [2, 8, 4, 4]]; const [a, b, c, d] = R.pick(pairs); const A = a ** b, B = c ** d;
+    return { stem: qcT(`${a}^(${b})`, `${c}^(${d})`, '') + 'Compare Quantity A and Quantity B.', choices: QCH, correct: [A > B ? 0 : A < B ? 1 : 2], ordered: true, expl: `${a}^(${b}) = ${A.toLocaleString('en-US')} and ${c}^(${d}) = ${B.toLocaleString('en-US')}. ${A === B ? 'They are equal (rewrite both with the same base to see why).' : (A > B ? 'A' : 'B') + ' is greater.'}` }; }
+  const n = R.pick([2, 3, 5, 6, 7]), m = R.pick([4, 9, 16, 25]);
+  return { stem: qcT(`√${n} + √${m}`, `√${n + m}`, '') + 'Compare Quantity A and Quantity B.', choices: QCH, correct: [0], ordered: true, expl: `Square both (both are positive): A² = ${n} + ${m} + 2√${n * m}, B² = ${n + m}. A² exceeds B² by 2√${n * m} > 0, so A is greater. In general √a + √b > √(a + b) for positive a and b.` };
+});
+G('Q', 'gre-line', () => MFIG.lineEq(5));
+G('Q', 'gre-box', () => MFIG.box(5));
+G('Q', 'gre-tri', () => MFIG.triang(5));
+G('Q', 'gre-dist', () => MFIG.dist(5));
+G('Q', 'gre-scat', () => MFIG.scat(5));
+G('Q', 'gre-pie', () => MFIG.pie(5));
+
+/* vocabulary in context: one-blank text completion built from the GRE word list's example sentences */
+const VC = GRE_VOCAB.words.filter(w => w.t !== 'M' && new RegExp('\\b' + w.w + '\\b', 'i').test(w.e));
+const pos1 = p => p.split('/').map(x => x.replace('.', ''));
+G('V', 'gre-vtc', () => {
+  const w = R.pick(VC), ps = pos1(w.p), pool = GRE_VOCAB.words.filter(o => o.w !== w.w && o.t !== w.t && o.t !== 'M' && pos1(o.p).some(x => ps.includes(x)));
+  const ds = R.sample(pool, 4).map(o => o.w); if (ds.length < 4) return null;
+  const stem = w.e.replace(new RegExp('\\b' + w.w + '\\b', 'i'), '_____').replace(/\b([Aa])n? _____/, '$1(n) _____');
+  return { stem: `Select the word that best completes the sentence.<br><br>${stem}`, choices: [w.w, ...ds], correct: [0], expl: `<b>${w.w}</b> (${w.p}): ${w.d}. ${ds.map(d => { const o = GRE_VOCAB.words.find(x => x.w === d); return `<i>${d}</i> means ${o.d}`; }).join('; ')}.` };
+});
+registerTest({
+  area: 'gre', id: 'gre-general', code: 'GRE', subject: 'GRE General Test', title: 'GRE General Test', store: 'pgre', accent: 'gre',
+  minutes: 88, cats: CATS, bank: BANK, gens: GENS, genRatio: k => k === 'V' ? 0.3 : 0.5,
+  ordered: true, secOf: q => q.cat === 'V' ? 0 : 1,
+  tools: ['calc'], helpNote: 'on-screen calculator',
+  calcNote: 'The real GRE provides a basic on-screen calculator for the Quantitative sections.',
+  ets: 'https://www.ets.org/gre/test-takers/general-test.html',
+  blurb: 'Verbal and Quantitative Reasoning in the current shorter format: text completion, sentence equivalence, reading comprehension, quantitative comparison, problem solving, and data interpretation.',
+});
+})();
+
 /* ── tests/physics-5266.js ── */
 /* Praxis Physics (5266): original questions written to the ETS content outline. No calculator is needed. */
 (() => {
@@ -31819,7 +32555,7 @@ function instantiate(raw) {
   const n = raw.choices.length; const order = [...Array(n).keys()]; if (!raw.ordered) R.shuf(order);
   return { id: raw.id, cat: raw.cat, lv: raw.lv || 1, stem: raw.stem, choices: order.map(i => raw.choices[i]), correct: raw.correct.map(c => order.indexOf(c)).sort((a, b) => a - b), expl: raw.expl, k: raw.correct.length, psg: raw.psg };
 }
-const fromStatic = b => instantiate({ id: b.id, cat: b.cat, lv: b.lv, stem: b.stem, choices: b.ch, correct: [...Array(b.k).keys()], expl: b.expl, psg: b.psg });
+const fromStatic = b => instantiate({ id: b.id, cat: b.cat, lv: b.lv, stem: b.stem, choices: b.ch, correct: b.ord ? b.ci : [...Array(b.k).keys()], expl: b.expl, psg: b.psg, ordered: !!b.ord });
 function priority(id, seen) { const s = seen[id]; if (!s) return Math.random(); return 1 + Math.random() + s.n * 0.15 - (s.w ? 0.85 : 0); }
 function pickCat(x, k, n, seen, level) {
   const all = x.bank.filter(b => b.cat === k), gensAll = x.gens[k] || [];
@@ -31895,7 +32631,7 @@ function buildTest(x, mode, cat, level, practice) {
   if (practice && mode !== 'full' && (!x.CAT[cat] || x.CAT[cat].cr)) cat = 'mix';
   const plan = mode === 'full' ? x.cats.filter(c => !c.cr).map(c => [c.k, c.n]) : crDrill ? [] : cat === 'mix' ? mixPlan(x, 20) : [[cat, 20]];
   let items = groupPsg(R.shuf(plan.flatMap(([k, n]) => pickCat(x, k, n, seen, level))));
-  if (x.ordered) items = items.map((q, i) => [q, i]).sort((a, b) => secOf(a[0]) - secOf(b[0]) || a[1] - b[1]).map(o => o[0]);
+  if (x.ordered) { const so = x.secOf || secOf; items = items.map((q, i) => [q, i]).sort((a, b) => so(a[0]) - so(b[0]) || a[1] - b[1]).map(o => o[0]); }
   if (x.cr && !practice && (mode === 'full' || crDrill)) items = items.concat(pickCR(x, seen, crDrill));
   const total = mode === 'full' ? x.minutes * 60 : crDrill ? crMinutes(x, true) * 60 : Math.round(items.length * x.secPer);
   const what = mode === 'full' ? (practice ? `${x.subject}: full-length practice` : `${x.title} · simulation`) : practice ? `${x.subject} practice: ${cat === 'mix' ? 'mixed topics' : x.CAT[cat].short}` : `${x.subject} timed drill: ${x.CAT[cat].short}`;
@@ -32035,6 +32771,7 @@ function route() {
   else if (h === 'simulate') renderCatalog('simulate');
   else if (h === 'lab') renderLab();
   else if (h === 'review') renderReview();
+  else if (h === 'gre') renderGRE();
   else if (h === 'about' || h === 'about-give' || h === 'support' || h === 'faq' || h === 'about-faq') renderAbout();
   else if (h === 'community') renderCommunity();
   else if (BY_ID[h]) renderTestPage(BY_ID[h]);
@@ -32060,10 +32797,10 @@ window.addEventListener('popstate', () => { if (!PATH_MODE) return; const h = pa
 document.addEventListener('click', e => { const a = e.target.closest('a[href^="#"]'); if (!a) return; e.preventDefault(); if (a.dataset.pref) PREF_MODE = a.dataset.pref; const h = a.getAttribute('href').slice(1); if (h === ROUTE && /^(about|faq)/.test(h)) { const el = document.getElementById(h === 'about-give' ? 'about-give' : /faq/.test(h) ? 'about-faq' : 'hub'); if (el) el.scrollIntoView({ block: 'start' }); return; } go(h); });
 
 /* ═══════════ HUB PAGES ═══════════ */
-const NAV_ITEMS = [['practice', 'Practice'], ['simulate', 'Exam Simulation'], ['lab', 'Response Lab'], ['review', 'Quick Review'], ['community', 'Community'], ['about', 'About']];
+const NAV_ITEMS = [['practice', 'Practice'], ['simulate', 'Exam Simulation'], ['lab', 'Response Lab'], ['review', 'Quick Review'], ['gre', 'GRE'], ['community', 'Community'], ['about', 'About']];
 let PREF_MODE = 'practice';
 function navKey(active) {
-  if (BY_ID[active]) return PREF_MODE === 'simulate' ? 'simulate' : 'practice';
+  if (BY_ID[active]) return BY_ID[active].area === 'gre' ? 'gre' : PREF_MODE === 'simulate' ? 'simulate' : 'practice';
   if (active === 'subjects' || active === 'plt' || String(active).startsWith('area-')) return 'practice';
   if (active === 'support' || active === 'faq' || active === 'about-faq' || active === 'about-give') return 'about';
   return active;
@@ -32092,7 +32829,7 @@ function spark(vals) {
   const W = 200, H = 36, x = i => 4 + (W - 8) * i / (vals.length - 1), y = v => 4 + (H - 8) * (1 - v / 100);
   return `<svg class="spark" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true"><path d="${vals.map((v, i) => (i ? 'L' : 'M') + x(i) + ',' + y(v)).join(' ')}" fill="none" stroke="var(--accent)" stroke-width="2" vector-effect="non-scaling-stroke"/><circle cx="${x(vals.length - 1)}" cy="${y(vals[vals.length - 1])}" r="3" fill="var(--accent)"/></svg>`;
 }
-const DISCLAIMER = 'Comma is an independent study resource, not affiliated with or endorsed by ETS. Praxis® is a trademark of ETS. All content here is original.';
+const DISCLAIMER = 'Comma is an independent study resource, not affiliated with or endorsed by ETS. Praxis® and GRE® are trademarks of ETS. All content here is original.';
 function foot() {
   return `<footer class="foot"><div><p>${esc(DISCLAIMER)}</p><p>Scores are practice estimates, not official scores. © ${new Date().getFullYear()} ${BRAND}.</p></div>
     <nav aria-label="Footer"><a href="#faq">FAQ</a><a href="#community">Community</a><a href="#about">Contact</a><a href="#about-give">Donate</a></nav></footer>`;
@@ -32216,6 +32953,7 @@ function renderHome() {
           <li><a href="#simulate"><b>Exam simulation</b><span>Full length and timed</span><i>→</i></a></li>
           <li><a href="#lab"><b>Response Lab</b><span>Feedback on your written answers</span><i>→</i></a></li>
           <li><a href="#review"><b>Quick Review</b><span>Flashcards and formula sheets</span><i>→</i></a></li>
+          <li><a href="#gre"><b>GRE</b><span>Practice tests, vocabulary, and math formulas</span><i>→</i></a></li>
         </ul>
         ${newTestsHTML()}
       </div>
@@ -32387,7 +33125,7 @@ function renderTestPage(x) {
   const fulls = hist.filter(h => h.mode === 'full' && !h.practice);
   const drillLabel = c => x.CAT[c] && x.CAT[c].cr ? `Timed written-response drill · ${crMinutes(x, true)} min` : `Timed drill · 20 questions · ${Math.round(20 * x.secPer / 60)} min`;
   const nCases = x.cr ? Object.values(CASES).filter(c => x.cr.groups.some(g => g.band === c.band)).length : 0;
-  const crumbArea = x.area === 'plt' ? 'Principles of Learning & Teaching' : x.area === 'core' ? 'Core Academic Skills' : AREA[x.area].name;
+  const crumbArea = x.area === 'plt' ? 'Principles of Learning & Teaching' : x.area === 'core' ? 'Core Academic Skills' : x.area === 'gre' ? '' : AREA[x.area].name;
   const bp = x.cats.map(c => { const [ok, t] = agg[c.k]; const p = t ? Math.round(ok / t * 100) : null;
     return `<li><span class="roman">${c.k}</span><div class="bp-name">${c.name}<div class="bar"><i class="${p == null ? '' : band(p)}" style="width:${p == null ? c.n / maxN * 100 : p}%"></i></div></div><span class="pct">${p == null ? c.n + ' q' : p + '%'}</span></li>`; }).join('');
   const kindOf = h => h.practice ? 'Practice' : h.mode === 'full' ? 'Simulation' : 'Timed drill';
@@ -32396,9 +33134,9 @@ function renderTestPage(x) {
   const resume = saved ? `<div class="resume"><p><b>${saved.practice ? 'Practice set' : 'Test'} in progress:</b> ${esc(saved.title)} · ${saved.ans.filter(a => a.length).length} of ${saved.items.length} answered${saved.practice ? '' : ` · <span class="mono">${fmtT(saved.remaining)}</span> left`}</p>
       <div class="row"><button class="btn primary" id="resumeBtn">Resume</button><button class="btn quiet" id="discardBtn">Discard</button></div></div>` : '';
   $('#hub').innerHTML = nav(x.id) + `<div class="page">
-    <div class="crumb"><a href="#${PREF_MODE === 'simulate' ? 'simulate' : 'practice'}">${PREF_MODE === 'simulate' ? 'Exam Simulation' : 'Practice'}</a> / ${esc(crumbArea)} / ${esc(x.subject)}</div>
+    <div class="crumb">${x.area === 'gre' ? `<a href="#gre">GRE</a> / Practice tests` : `<a href="#${PREF_MODE === 'simulate' ? 'simulate' : 'practice'}">${PREF_MODE === 'simulate' ? 'Exam Simulation' : 'Practice'}</a> / ${esc(crumbArea)} / ${esc(x.subject)}`}</div>
     <section class="t-head">
-      <div><div class="eyebrow">Test ${x.code}</div>
+      <div><div class="eyebrow">${x.area === 'gre' ? 'Graduate Record Examinations' : 'Test ' + x.code}</div>
         <h1 class="display">${esc(x.subject)}</h1>
 </div>
       <div class="specs"><div><b>${x.nSR}</b><small>questions${x.cr ? ` + ${x.crCat.n} written` : ''}</small></div><div><b>${fmtHM(x.minutes)}</b><small>hours</small></div><div><b>${srCats.length}</b><small>categories</small></div></div>
@@ -32795,6 +33533,138 @@ document.addEventListener('keydown', e => {
 });
 
 
+
+/* ═══════════ GRE ═══════════ */
+/* Its own tab: practice tests (the gre-general test page), vocabulary flashcards and quiz, math formulas, and a test guide.
+   Nothing here is listed with the Praxis tests or in Quick Review. */
+const GR = { tab: 'tests', vmode: 'cards', theme: 'all', order: [], i: 0, flip: false, known: null, kp: null, quiz: null, find: '', openSheets: new Set([0]) };
+const GRE_X = () => BY_ID['gre-general'];
+const grKnownKey = () => `pp.${PID || 'anon'}.gre.known`;
+function grLoadKnown() { if (GR.kp === (PID || 'anon') && GR.known) return; GR.kp = PID || 'anon'; GR.known = new Set(LS.get(grKnownKey(), [])); }
+function grSaveKnown() { LS.set(grKnownKey(), [...GR.known]); }
+const grWords = () => GRE_VOCAB.words.filter(w => GR.theme === 'all' || w.t === GR.theme);
+function grBuild(shuffle) { grLoadKnown(); const idx = grWords().map(w => w.i).filter(i => !GR.known.has(i)); if (shuffle) R.shuf(idx); GR.order = idx; GR.i = 0; GR.flip = false; }
+/* bold the word (and simple inflections) inside its example sentence */
+const grMark = (w, e) => esc(e).replace(new RegExp('\\b(' + w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\w*)', 'i'), '<b>$1</b>');
+function grQuizNew() {
+  const pool = grWords().length >= 5 ? grWords() : GRE_VOCAB.words;
+  const qs = R.sample(pool, Math.min(10, pool.length)).map(w => {
+    const kind = Math.random() < 0.5 ? 'def' : 'word';
+    const others = R.sample(GRE_VOCAB.words.filter(o => o.i !== w.i && o.t !== w.t), 3);
+    const opts = R.shuf([w, ...others]);
+    return { w, kind, opts, ans: opts.indexOf(w), pick: null };
+  });
+  GR.quiz = { qs, i: 0, score: 0 };
+}
+function renderGRE() {
+  const x = GRE_X(); setAccent(x || null); show('hub'); grLoadKnown();
+  const sum = x ? testSummary(x) : null;
+  const tabs = [['tests', 'Practice tests'], ['vocab', 'Vocabulary'], ['math', 'Math formulas'], ['guide', 'Test guide']];
+  let body = '';
+  if (GR.tab === 'tests') {
+    const lv = getLevel();
+    body = `<div class="gre-modes">
+      <div class="gre-card"><h3>Full practice test</h3><p>${x ? x.nSR : 54} questions in ${x ? fmtHM(x.minutes) : '1:28'}: a Verbal section, then a Quant section, timed like the real test. Answers and explanations after you submit.</p><button class="btn primary" id="grFull">Start full test</button></div>
+      <div class="gre-card"><h3>Practice by section</h3><p>Untimed 20-question sets with instant feedback on every question.</p><div class="row"><button class="btn" id="grPV">Verbal practice</button><button class="btn" id="grPQ">Quant practice</button></div></div>
+      <div class="gre-card"><h3>Timed section drill</h3><p>20 questions from one section, at real-test pacing.</p><div class="row"><button class="btn quiet" id="grDV">Verbal drill</button><button class="btn quiet" id="grDQ">Quant drill</button></div></div>
+    </div>
+    <p class="small muted" style="margin:14px 0 0">Difficulty: <b>${esc(LEVEL[lv].name)}</b>. Change it, see past scores, or turn off keyboard shortcuts on the <a href="#gre-general">GRE test page</a>.</p>
+    ${sum && sum.hist.length ? `<p class="small" style="margin:8px 0 0">${sum.hist.length} attempt${sum.hist.length > 1 ? 's' : ''} so far${sum.best != null ? ` · best full test ${sum.best}%` : ''} · last ${sum.last.pct}%</p>` : ''}
+    <h2 class="gre-h2">What the questions look like</h2>
+    <ul class="gre-tips">${GRE_TIPS.map(([t, d]) => `<li><b>${esc(t)}</b><span>${esc(d)}</span></li>`).join('')}</ul>`;
+  } else if (GR.tab === 'vocab') {
+    const ws = grWords(), got = ws.filter(w => GR.known.has(w.i)).length;
+    const themeSel = `<select id="grTheme" aria-label="Word group"><option value="all">All words (${GRE_VOCAB.words.length})</option>${Object.entries(GRE_VOCAB.themes).map(([k, v]) => `<option value="${k}" ${GR.theme === k ? 'selected' : ''}>${esc(v)} (${GRE_VOCAB.words.filter(w => w.t === k).length})</option>`).join('')}</select>`;
+    const modes = `<div class="qr-tabs gre-sub" role="tablist">${[['cards', 'Flashcards'], ['quiz', 'Quiz'], ['list', 'Word list']].map(([k, l]) => `<button role="tab" data-grv="${k}" aria-selected="${GR.vmode === k}">${l}</button>`).join('')}</div>`;
+    let v = '';
+    if (GR.vmode === 'cards') {
+      if (!GR.order.length && ws.some(w => !GR.known.has(w.i))) grBuild(false);
+      const w = GRE_VOCAB.words[GR.order[GR.i]];
+      v = `<div class="card-tools">${themeSel}<button class="btn quiet" id="grShuf">Shuffle</button><span class="small muted">${got ? `${got} of ${ws.length} marked "know it"` : 'Click the card or press Space to flip. Arrow keys move.'}</span>${got ? '<button class="btn quiet" id="grReset">Reset</button>' : ''}</div>
+      ${w ? `<div class="fcard gre-fc ${GR.flip ? 'flip' : ''}" id="fcard" tabindex="0" role="button" aria-label="Flashcard for ${esc(w.w)}. Activate to flip."><div class="fcard-in">
+        <div class="fface front"><span class="kind">${esc(w.th)}</span><div class="gw">${esc(w.w)}</div><div class="gp">${esc(w.p)}</div></div>
+        <div class="fface back"><span class="kind">${esc(w.w)} · ${esc(w.p)}</span><div class="gd">${esc(w.d)}</div><p class="ge">“${grMark(w.w, w.e)}”</p><p class="gs"><span>Similar:</span> ${esc(w.s)}</p></div></div></div>
+      <div class="card-nav"><span class="count">${GR.i + 1} / ${GR.order.length}</span><button class="btn quiet" id="rvPrev" ${GR.i === 0 ? 'disabled' : ''}>← Previous</button><button class="btn quiet" id="grAgain">Again later</button><button class="btn" id="grGot">I know it</button><button class="btn primary" id="rvNext">Next</button></div>`
+        : `<div class="empty">You marked every word in this group as known. <button class="linkbtn" id="grReset2">Start the group again</button></div>`}`;
+    } else if (GR.vmode === 'quiz') {
+      if (!GR.quiz) grQuizNew();
+      const Z = GR.quiz, q = Z.qs[Z.i];
+      if (!q) v = `<div class="card-tools">${themeSel}</div><div class="gre-quiz"><h3>You got ${Z.score} of ${Z.qs.length}.</h3><p class="muted">${Z.score === Z.qs.length ? 'Perfect round.' : 'Missed words go back into your flashcard pile.'}</p><button class="btn primary" id="grQNew">New quiz</button></div>`;
+      else {
+        const prompt = q.kind === 'def' ? `<p class="small muted" style="margin:0 0 6px">Which word means:</p><p class="gq-p">${esc(q.w.d)}</p>` : `<p class="small muted" style="margin:0 0 6px">What does this word mean?</p><p class="gq-p"><b>${esc(q.w.w)}</b> <span class="muted">(${esc(q.w.p)})</span></p>`;
+        v = `<div class="card-tools">${themeSel}<span class="small muted">Question ${Z.i + 1} of ${Z.qs.length} · ${Z.score} correct</span></div>
+        <div class="gre-quiz">${prompt}<div class="choices">${q.opts.map((o, j) => { const st = q.pick == null ? '' : j === q.ans ? 'is-right' : j === q.pick ? 'is-wrong' : ''; return `<button class="choice ${st}" data-gq="${j}" ${q.pick != null ? 'aria-disabled="true"' : ''}><span class="ov"></span><span><span class="ltr">${LETTERS[j]}.</span> ${esc(q.kind === 'def' ? o.w : o.d)}</span></button>`; }).join('')}</div>
+        ${q.pick != null ? `<div class="gq-fb ${q.pick === q.ans ? 'ok' : 'no'}"><b>${q.pick === q.ans ? 'Correct.' : 'Not quite.'}</b> <b>${esc(q.w.w)}</b> (${esc(q.w.p)}): ${esc(q.w.d)}.<br><i>“${grMark(q.w.w, q.w.e)}”</i></div><div class="row" style="margin-top:12px"><button class="btn primary" id="grQNext">${Z.i === Z.qs.length - 1 ? 'See score' : 'Next'}</button></div>` : ''}</div>`;
+      }
+    } else {
+      const f = GR.find.trim().toLowerCase(), rows = ws.filter(w => !f || w.w.includes(f) || w.d.toLowerCase().includes(f));
+      v = `<div class="card-tools">${themeSel}<input id="grFind" type="search" placeholder="Search words or meanings" value="${esc(GR.find)}" aria-label="Search words"><span class="small muted">${rows.length} word${rows.length === 1 ? '' : 's'}</span></div>
+      <div class="tablewrap"><table class="data gre-list"><thead><tr><th>Word</th><th>Meaning</th><th>Example</th></tr></thead><tbody>${rows.map(w => `<tr><td><b>${esc(w.w)}</b><br><small class="muted">${esc(w.p)}</small></td><td>${esc(w.d)}<br><small class="muted">${esc(w.s)}</small></td><td><i>${grMark(w.w, w.e)}</i></td></tr>`).join('')}</tbody></table></div>`;
+    }
+    body = modes + v;
+  } else if (GR.tab === 'math') {
+    const sh = GRE_SHEETS.filter(s => s.title !== 'Test overview');
+    body = `<p class="small muted" style="margin:0 0 12px">The real GRE gives you no formula sheet, so these are worth memorizing. The on-screen calculator handles arithmetic, not formulas.</p>
+      <div class="sheets">${sh.map((s, si) => `<details class="sheet" data-gs="${si}" ${GR.openSheets.has(si) ? 'open' : ''}><summary><span class="sh-t">${esc(s.title)}</span><small>${s.rows.length} rows</small></summary><div class="sh-body">${s.note ? `<p class="sn">${F(esc(s.note))}</p>` : ''}<div class="tablewrap"><table class="data sh-tab"><thead><tr>${s.cols.map(c => `<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>${s.rows.map(r => `<tr>${r.map(c => `<td>${F(esc(c))}</td>`).join('')}</tr>`).join('')}</tbody></table></div></div></details>`).join('')}</div>`;
+  } else {
+    const ov = GRE_SHEETS.find(s => s.title === 'Test overview');
+    body = `<p style="margin:0 0 14px;max-width:68ch">${esc(ov.note)} Verbal and Quant are each scored from 130 to 170, and the essay from 0 to 6.</p>
+      <div class="tablewrap"><table class="data sh-tab"><thead><tr>${ov.cols.map(c => `<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>${ov.rows.map(r => `<tr>${r.map(c => `<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
+      <h2 class="gre-h2">Tips by question type</h2>
+      <ul class="gre-tips">${GRE_TIPS.map(([t, d]) => `<li><b>${esc(t)}</b><span>${esc(d)}</span></li>`).join('')}</ul>
+      <h2 class="gre-h2">A simple study plan</h2>
+      <ul class="gre-tips">
+        <li><b>Every day</b><span>Learn 10 to 15 new words with the flashcards, then take one vocabulary quiz.</span></li>
+        <li><b>Twice a week</b><span>Do a 20-question Verbal or Quant practice set and read every explanation, including for questions you got right.</span></li>
+        <li><b>Every two weeks</b><span>Take a full practice test under timed conditions. Raise the difficulty once you score well on Standard.</span></li>
+        <li><b>Before test day</b><span>Review the math formulas until you can write them from memory.</span></li>
+      </ul>
+      <p class="small muted" style="margin-top:18px">For registration, dates, and official practice tests, see <a href="https://www.ets.org/gre" target="_blank" rel="noopener">ets.org/gre</a>.</p>`;
+  }
+  $('#hub').innerHTML = nav('gre') + `<div class="page gre">
+    <div class="eyebrow">GRE General Test</div><h1 class="display" style="margin-bottom:6px">Get ready for the <em>GRE</em>.</h1>
+    <p class="lead">Practice tests, vocabulary, and math formulas for the GRE, separate from the Praxis material.</p>
+    <div class="qr-tabs gre-tabs" role="tablist">${tabs.map(([k, l]) => `<button role="tab" data-grt="${k}" aria-selected="${GR.tab === k}">${l}</button>`).join('')}</div>
+    <div class="gre-body">${body}</div>
+    ${foot()}
+  </div>`;
+  const re = () => { renderGRE(); bindNav(); };
+  $$('[data-grt]').forEach(b => b.onclick = () => { GR.tab = b.dataset.grt; re(); });
+  if (GR.tab === 'tests' && x) {
+    $('#grFull').onclick = () => { PREF_MODE = 'simulate'; startTest(x, 'full', null, getLevel()); };
+    $('#grPV').onclick = () => startTest(x, 'drill', 'V', getLevel(), true); $('#grPQ').onclick = () => startTest(x, 'drill', 'Q', getLevel(), true);
+    $('#grDV').onclick = () => { PREF_MODE = 'simulate'; startTest(x, 'drill', 'V', getLevel()); }; $('#grDQ').onclick = () => { PREF_MODE = 'simulate'; startTest(x, 'drill', 'Q', getLevel()); };
+  }
+  if (GR.tab === 'math') $$('details.sheet').forEach(dt => dt.addEventListener('toggle', () => { const i = +dt.dataset.gs; dt.open ? GR.openSheets.add(i) : GR.openSheets.delete(i); }));
+  if (GR.tab !== 'vocab') return;
+  $$('[data-grv]').forEach(b => b.onclick = () => { GR.vmode = b.dataset.grv; if (GR.vmode === 'quiz') GR.quiz = null; re(); });
+  if ($('#grTheme')) $('#grTheme').onchange = () => { GR.theme = $('#grTheme').value; grBuild(false); GR.quiz = null; re(); };
+  if (GR.vmode === 'list') { const f = $('#grFind'); f.oninput = () => { GR.find = f.value; const pos = f.selectionStart; re(); const g = $('#grFind'); g.focus(); g.setSelectionRange(pos, pos); }; return; }
+  if (GR.vmode === 'quiz') {
+    $$('[data-gq]').forEach(b => b.onclick = () => { const Z = GR.quiz, q = Z.qs[Z.i]; if (q.pick != null) return; q.pick = +b.dataset.gq; if (q.pick === q.ans) Z.score++; else { GR.known.delete(q.w.i); grSaveKnown(); } re(); });
+    if ($('#grQNext')) $('#grQNext').onclick = () => { GR.quiz.i++; re(); };
+    if ($('#grQNew')) $('#grQNew').onclick = () => { grQuizNew(); re(); };
+    return;
+  }
+  const reset = () => { grWords().forEach(w => GR.known.delete(w.i)); grSaveKnown(); grBuild(false); re(); };
+  if ($('#grReset')) $('#grReset').onclick = reset; if ($('#grReset2')) $('#grReset2').onclick = reset;
+  if ($('#grShuf')) $('#grShuf').onclick = () => { grBuild(true); re(); };
+  if (!$('#fcard')) return;
+  const ci = GR.order[GR.i];
+  const flip = () => { GR.flip = !GR.flip; $('#fcard').classList.toggle('flip', GR.flip); };
+  const move = d => { const n = GR.i + d; if (n >= GR.order.length) grBuild(false); else if (n >= 0) { GR.i = n; GR.flip = false; } re(); };
+  $('#fcard').onclick = flip; $('#fcard').onkeydown = e => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); flip(); } };
+  $('#rvPrev').onclick = () => move(-1); $('#rvNext').onclick = () => move(1);
+  $('#grGot').onclick = () => { GR.known.add(ci); grSaveKnown(); GR.order = GR.order.filter(i => i !== ci); if (GR.i >= GR.order.length) GR.i = 0; GR.flip = false; re(); };
+  $('#grAgain').onclick = () => { GR.order.push(ci); move(1); };
+}
+document.addEventListener('keydown', e => {
+  if (ROUTE !== 'gre' || GR.tab !== 'vocab' || GR.vmode !== 'cards' || inExam || $('#modal-root').innerHTML || /^(SELECT|INPUT|TEXTAREA|BUTTON)$/.test(e.target.tagName)) return;
+  if (e.key === 'ArrowRight' && $('#rvNext')) { e.preventDefault(); $('#rvNext').click(); }
+  else if (e.key === 'ArrowLeft' && $('#rvPrev') && !$('#rvPrev').disabled) { e.preventDefault(); $('#rvPrev').click(); }
+  else if (e.key === ' ' && $('#fcard')) { e.preventDefault(); $('#fcard').click(); }
+});
+
 /* ═══════════ EXAM ═══════════ */
 function enterExam() {
   for (const k in CBOX) delete CBOX[k];
@@ -33041,7 +33911,7 @@ function renderResults(rec, fresh) {
   const bindHead = () => { $('#againB').onclick = () => startTest(x, rec.mode, rec.cat || (rec.practice ? 'mix' : x.cats[0].k), rec.level || 'std', rec.practice); if ($('#drillW')) $('#drillW').onclick = () => startTest(x, 'drill', weakest.k, rec.level || 'std', true); };
   const t0 = crTotals(rec);
   $('#results').innerHTML = nav(x.id) + `<div class="page">
-    <div class="crumb"><a href="#${rec.practice ? 'practice' : 'simulate'}" data-pref="${rec.practice ? 'practice' : 'simulate'}">${rec.practice ? 'Practice' : 'Exam Simulation'}</a> / <a href="#${x.id}">${esc(x.subject)}</a> / Results</div>
+    <div class="crumb">${x.area === 'gre' ? '<a href="#gre">GRE</a>' : `<a href="#${rec.practice ? 'practice' : 'simulate'}" data-pref="${rec.practice ? 'practice' : 'simulate'}">${rec.practice ? 'Practice' : 'Exam Simulation'}</a>`} / <a href="#${x.id}">${esc(x.subject)}</a> / Results</div>
     <section class="panel score" id="scoreHead">${head()}</section>
     ${fresh && !GIVE_DISMISSED ? giveCard('after') : ''}
     ${cats.length ? `<section class="panel" style="margin-top:20px"><h2>Performance by content category</h2>
@@ -33226,12 +34096,12 @@ function openForgot(email0) {
 }
 function renderGate(err) {
   setAccent(null); show('hub');
-  const nT = TESTS.length;
+  const nT = TESTS.filter(t => t.area !== 'gre').length;
   $('#hub').innerHTML = `<div class="page gate gate2">
     <section class="g-head">
       <h1 class="g-title">Pass with room to spare<svg class="g-comma" viewBox="14 6.5 36 54" aria-hidden="true"><circle cx="31" cy="24" r="16"/><path d="M46.4 29.2C44.6 43.4 36.2 53.6 25 59.4c-1.2.6-2.1-.7-1.2-1.6C28.4 53 31.6 47.6 33.6 40.1z"/></svg></h1>
       <p class="g-lead">Free Praxis practice tests, with an explanation for every answer.</p>
-      <p class="g-small">${nT} tests, from Core and PLT to science, math, and world languages.</p>
+      <p class="g-small">${nT} Praxis tests, from Core and PLT to science, math, and world languages, plus GRE prep.</p>
       <p class="g-free">No fees and no ads</p>
     </section>
     <aside class="g-side">
