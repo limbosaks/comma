@@ -8,6 +8,7 @@ const SIGNUP_ENDPOINT = 'https://script.google.com/macros/s/AKfycby1jWaTEgqIqPZG
   const me = document.currentScript, host = location.hostname.replace(/^www\./, '');
   const SITE = (me && me.dataset.site) || (/scholarlab/.test(host) ? 'scholarlab' : /comma/.test(host) ? 'comma' : '');
   if (!ok || !SITE) return; /* nothing shows until the script's address is pasted above */
+  window.SIGNUP = { endpoint: SIGNUP_ENDPOINT, site: SITE }; window.dispatchEvent(new Event('signup-ready')); /* the site signs members in through the script (Nov 2026) */
   const T = {
     comma: { title: 'Get your Comma access code', lead: 'Comma is free practice for teacher certification exams. Tell us who you are and we’ll email your access code.',
       extra: ['School or organization (optional)', 'suOrg', 'e.g. Lincoln High School'], opt: 'Email me about new Comma products, practice tests, and updates. Optional. You can unsubscribe anytime.' },

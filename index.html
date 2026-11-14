@@ -35652,6 +35652,15 @@ async function derivedCode(email, mk = monthKey()) { const h = await sha256hex(S
 const SESSION_DAYS = 30;
 const ckOf = (email, code) => sha256hex('ck|' + SITE_KEY + '|' + normEmail(email) + '|' + normCode(code));
 async function ckOK(email, ck) { if (!ck) return false; for (const c of await validCodes(email)) if (ck === await ckOf(email, c)) return true; return false; }
+/* ── on the website (Nov 2026): access codes are made from a key only the sign-up script has, so it checks them ──
+   POST {a:'msign'} returns the sign-in fingerprint (ck) to keep; {a:'mcheck'} says whether a remembered one is still
+   good (this month's code). Opened somewhere without the script, the page falls back to its own check. */
+const signupReady = async () => { if (document.readyState === 'loading') await new Promise(r => document.addEventListener('DOMContentLoaded', r, { once: true })); return window.SIGNUP || null; };
+async function mPost(body) {
+  const cfg = await signupReady(); if (!cfg || !cfg.endpoint) return { offline: true };
+  try { const ac = new AbortController(), tm = setTimeout(() => ac.abort(), 15000); const r = await fetch(cfg.endpoint, { method: 'POST', body: JSON.stringify({ site: 'comma', ...body }), signal: ac.signal }); clearTimeout(tm); return await r.json(); }
+  catch (e) { return { net: true }; }
+}
 async function sessionOK(m) {
   if (!m || !m.email) return false;
   if (m.code && !m.ck) { m.ck = await ckOf(m.email, m.code); delete m.code; }
@@ -35669,7 +35678,16 @@ async function enterGuestGate() {
   GUEST = true; DB = null; WRITE_OK = false;
   const local = LS.get('pp.member.' + memberKey(), null);
   if (LS.get('pp.signedout.' + memberKey(), false)) { MODE = 'gate'; return; }
-  if (local && local.email && !EMBED_REVOKED.includes(await sha256hex('rev|' + normEmail(local.email))) && !(EMBED_ACCESS && (EMBED_ACCESS.off || []).includes(await emHash(local.email))) && await sessionOK(local)) { MEMBER = local; enterMember(); return; }
+  const online = !!(await signupReady() || {}).endpoint;
+  const okHere = local && local.email && !EMBED_REVOKED.includes(await sha256hex('rev|' + normEmail(local.email))) && !(EMBED_ACCESS && (EMBED_ACCESS.off || []).includes(await emHash(local.email)));
+  if (okHere && online && /^[0-9a-f]{64}$/.test(local.ck || '') && !(local.exp && Date.parse(local.exp) < Date.now())) {
+    MEMBER = local; enterMember();
+    /* the script checks it in the background: last month's code after the 3rd, a reset code, or a sign-in from before Nov 2026 signs out */
+    mPost({ a: 'mcheck', email: normEmail(local.email), ck: local.ck }).then(r => { if (r && r.auth && MEMBER === local && !inExam) {
+      const s = LS.get('pp.member.' + memberKey(), null); if (s) { delete s.ck; LS.set('pp.member.' + memberKey(), s); }
+      MEMBER = null; MODE = 'gate'; GATE_MSG = 'Access codes change every month. Enter this month\'s code to keep practicing — your scores are still here. (Codes changed in November 2026: check your email for the new one.)'; route(); } });
+    return; }
+  if (okHere && !online && await sessionOK(local)) { MEMBER = local; enterMember(); return; }
   if (local && local.email) GATE_MSG = 'Access codes change every month. Enter this month\'s code from the site owner to keep practicing — your scores are still here.';
   MODE = 'gate';
 }
@@ -35767,8 +35785,14 @@ function renderGate(err) {
     if (!isEmail(email)) return fail('Enter the email address the site owner registered for you.');
     if (normCode(code).length < 4) return fail('Enter your access code.');
     $('#gGo').disabled = true;
-    if (GUEST) { if (!(await guestValid(email, code))) return fail('That email and access code don\'t match. Monthly codes change on the 1st, so check you have the latest one, or use "Forgot your code?" below.');
-      MEMBER = { name: email, email, ck: await ckOf(email, code), joinedAt: new Date().toISOString() }; GATE_MSG = ''; saveCred(email, code); enterMember(); go('home'); return; }
+    if (GUEST) {
+      if (EMBED_REVOKED.includes(await sha256hex('rev|' + email)) || (EMBED_ACCESS && (EMBED_ACCESS.off || []).includes(await emHash(email)))) return fail('Your access is no longer active. Email ' + OWNER_EMAIL + ' if you think this is a mistake.');
+      const r = await mPost({ a: 'msign', email, code: normCode(code) });
+      let ck;
+      if (r && r.offline) { if (!(await guestValid(email, code))) return fail('That email and access code don\'t match. Monthly codes change on the 1st, so check you have the latest one, or use "Forgot your code?" below.'); ck = await ckOf(email, code); }
+      else if (r && r.ok && r.ck) ck = r.ck;
+      else return fail(r && r.msg ? r.msg : 'Couldn\'t reach the sign-in service. Check your connection and try again.');
+      MEMBER = { name: email, email, ck, joinedAt: new Date().toISOString() }; GATE_MSG = ''; saveCred(email, code); enterMember(); go('home'); return; }
     await loadAccess();
     if (!ACCESS_DOC.emails.length) return fail('The site couldn\'t load its invitation list for your Claude account. Make sure you\'re signed in at claude.ai with the email the site owner shared the site with, then reload.');
     if (!(await emailActive(email)) || !(await codeOK(email, code))) return fail('That email and access code don\'t match. Monthly codes change on the 1st, so check you have the latest one, or use "Forgot your code?" below.');
